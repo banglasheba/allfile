@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>শপিং</title>
+  <style>
+ 
+  </style>
+</head>
+<body>
+
+<h2>শপিং</h2>
+
+<input type="text" id="searchInput" placeholder="খোজ করুন...">
+
+<!-- বিভাগ বাটন -->
+<div class="category-container">
+  <button class="category-btn" data-category="chittagong">চট্টগ্রাম</button>
+  <button class="category-btn" data-category="dhaka">ঢাকা</button>
+</div>
+
+<!-- জেলা এবং উপজেলা লিস্ট -->
+<div id="areaContainer">
+  <!-- ঢাকা বিভাগ -->
+  <ul class="district-list" data-category="dhaka">
+    <li>
+      <button class="district-btn" data-district="dhaka">ঢাকা</button>
+      <ul class="upazila-list">
+        <li><a class="upazila-btn" href="academy.html">ধানমন্ডি</a></li>
+        <li><a class="upazila-btn" href="page_gulshan.html">গুলশান</a></li>
+        <li><a class="upazila-btn" href="page_mirpur.html">মিরপুর</a></li>
+      </ul>
+    </li>
+    
+  </ul>
+
+  <!-- চট্টগ্রাম বিভাগ  -->
+  <ul class="district-list" data-category="chittagong">
+    <li>
+      <button class="district-btn" data-district="chittagong">চট্টগ্রাম</button>
+      <ul class="upazila-list">
+        <li><a class="upazila-btn" href="page_gulshan.html">মিরসারাই</a></li>
+        <li><a class="upazila-btn" href="page_mirpur.html">সিতাকুন্ড</a></li>
+      </ul>
+    </li>
+    
+  </ul>
+</div>
+
+<script>
+  
+</script>
+
+</body>
+</html>
