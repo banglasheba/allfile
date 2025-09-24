@@ -1,0 +1,246 @@
+<!-- Islamic Academy Page -->
+<div class="academy-page">
+
+  <!-- Title -->
+  <h1 style="text-align:center; font-size:28px; margin-bottom:20px;">
+    ইসলামিক একাডেমি
+  </h1>
+
+ 
+
+  <!-- Image Slider -->
+  <div class="slider-container">
+    <div class="slider">
+      <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQm8YBaCaNfwsSNuLfY8tmdVTSELuIbBkgWtU-GOVw7yg-vpB6U" alt="Quran Class 1">
+      <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTL0H8nI2b4VULRhljhwOYJBNXrx2dDzaK3J1QRMNgBiKOEjzjF" alt="Quran Class 2">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6alPAfe8BMT8kWHyiePKv8hiyjwIVaRoad8j72coH3bYslQTG" alt="Quran Class 3">
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1B5JgzFhqAj8dwT0j36ggRZgGe6XpGCSklSvUG_nx2HzDrcHMwgHElzgxdOzb9FNukAQ&usqp=CAU" alt="Quran Class 4">
+    </div>
+  </div>
+
+  <!-- Admission Button -->
+  <div style="text-align:center; margin:20px 0;">
+    <button onclick="document.getElementById('admissionForm').style.display='block'" class="admission-btn">
+      ভর্তি আবেদন
+    </button>
+  </div>
+
+  <!-- Admission Form (hidden by default) -->
+  <div id="admissionForm" class="form-popup">
+    <form id="admission" onsubmit="sendToWhatsApp(event)">
+      <h3>ভর্তি ফর্ম</h3>
+      <label>শিক্ষার্থির নাম:</label>
+      <input type="text" id="name" required>
+      <label>পিতার নাম:</label>
+      <input type="text" id="fthname" required>
+      <label>মাতার নাম:</label>
+      <input type="text" id="mthname" required>
+      <label>মোবাইল:</label>
+      <input type="text" id="phone" required>
+      <label>ঠিকানা:</label>
+      <input type="text" id="address" required>
+      <button type="submit">সাবমিট</button>
+      <button type="button" onclick="document.getElementById('admissionForm').style.display='none'">বন্ধ করুন</button>
+    </form>
+  </div>
+  
+   <!-- Collapsible Buttons -->
+  <div class="accordion">
+    <button class="accordion-btn">ইসলামি একাডেমি সম্পর্কে</button>
+    <div class="accordion-content">
+      <p>আমাদের ইসলামি একাডেমি একটি আধুনিক অনলাইন ইসলামি শিক্ষা প্ল্যাটফর্ম, যেখানে শিশুদের ঘরে বসেই কুরআন শিক্ষা গ্রহণের সুযোগ তৈরি করা হয়েছে। ব্যস্ত জীবনের কারণে অনেক সময় সন্তানদেরকে নিয়মিত মাদ্রাসায় পাঠানো সম্ভব হয় না। তাই অভিজ্ঞ ও যোগ্য হাফেজ, ক্বারি ও আলেম শিক্ষকদের মাধ্যমে অনলাইনে কুরআন শিক্ষা দেওয়ার উদ্যোগ নিয়েছি আমরা।।</p>
+    </div>
+
+   <button class="accordion-btn">ইসলামি একাডেমির লক্ষ্য</button>
+<div class="content">
+  <p>শিশুদেরকে সঠিক তাজবিদসহ কুরআন তিলাওয়াত শেখানো<br>
+  নূরানি কায়েদা থেকে শুরু করে ধাপে ধাপে কুরআন শিক্ষার সুযোগ দেওয়া<br>
+  ইসলামি আদব-আখলাক, ছোট ছোট দোয়া ও সূরা শিক্ষা প্রদান<br>
+    প্রযুক্তিকে কাজে লাগিয়ে ইসলামি শিক্ষা সহজলভ্য করা<br>
+  </p>
+</div>
+
+   <button class="accordion-btn">ইসলামি একাডেমির বিশেষত্ব</button>
+<div class="content">
+  <p>অভিজ্ঞ ও সনদপ্রাপ্ত শিক্ষকবৃন্দ<br>
+  লাইভ অনলাইন ক্লাস (Zoom/Google Meet)<br>
+  ছোট ব্যাচে পাঠদান, যাতে প্রত্যেক শিশুর প্রতি আলাদা মনোযোগ দেওয়া যায়<br>
+   ক্লাসের সময়সূচি নমনীয়, অভিভাবকরা নিজেদের সুবিধা অনুযায়ী বেছে নিতে পারবেন<br>
+    শিশুদের মানসিক ও চারিত্রিক উন্নয়নে গুরুত্ব<br>
+  </p>
+</div>
+    
+ <button class="accordion-btn">নিয়ম নিতি</button>
+<div class="content">
+  <p>ভর্তি নেয়ার সময় সঠিক তথ্য (শিক্ষার্থীর নাম, বয়স, অভিভাবকের নাম, যোগাযোগ নম্বর) দিতে হবে<br>
+    অভিভাবকরা চাইলে প্রথমে একটি ডেমো ক্লাস নিতে পারবেন<br>
+  শিক্ষার্থীকে নির্ধারিত সময় অনুযায়ী ক্লাসে উপস্থিত থাকতে হবে<br>
+  ক্লাস শুরু হওয়ার ৫ মিনিট পুর্বে যোগদান করতে হবে<br>
+   ক্লাসের সময়সূচি নমনীয়, অভিভাবকরা নিজেদের সুবিধা অনুযায়ী বেছে নিতে পারবেন<br>
+    ভর্তি ফি ও মাসিক ফি (৮তাঃ) নির্ধারিত সময়ে পরিশোধ করতে হবে<br>
+    নির্ধারিত সময়ের মধ্যে ফি না দিলে ক্লাস বন্ধ রাখা হতে পারে<br>
+  </p>
+</div>
+    
+    <button class="accordion-btn">ক্লাস পরিচালনা</button>
+<div class="content">
+  <p>ক্লাস Zoom / Google Meet এর মাধ্যমে পরিচালিত হবে<br>
+   ক্লাসের সময়সীমা ৫০ মিনিট (জুমটাইম)<br>
+  মিস ক্লাস সাধারণত পুনরায় নেওয়া যাবে না। তবে বিশেষ ক্ষেত্রে শিক্ষক অনুমতি দিলে আলাদা করে ব্যবস্থা করা হবে।<br>
+   শিক্ষার্থীর নিজস্ব ডিভাইস (মোবাইল/ট্যাব/কম্পিউটার) ও ইন্টারনেট থাকতে হবে<br>
+   
+  </p>
+</div>
+    
+     <button class="accordion-btn">শৃঙ্খলা</button>
+<div class="content">
+  <p>শিক্ষার্থীকে পরিচ্ছন্ন পোশাক পরে ক্লাসে অংশগ্রহণ করতে হবে<br>
+ক্যামেরা অন রেখে ক্লাসে উপস্থিত থাকতে হবে (যদি সম্ভব হয়<br>
+শিক্ষক ও সহপাঠীদের সাথে ভদ্র আচরণ বজায় রাখতে হবে<br>
+ক্লাস চলাকালীন অন্য কোনো কাজে ব্যস্ত থাকা যাবে না<br>
+  </p>
+</div>
+    
+    <button class="accordion-btn">অভিভাবকের দায়িত্ব</button>
+<div class="content">
+  <p>শিশুকে নির্ধারিত সময়ে ক্লাসে যুক্ত করতে হবে।<br>
+ক্লাসের পর অনুশীলনের জন্য অভিভাবককে সহযোগিতা করতে হবে।<br>
+ইন্টারনেট ও ডিভাইসের সমস্যা থাকলে আগে থেকে শিক্ষককে জানাতে হবে।<br>
+  </p>
+</div>
+    
+  </div>
+  
+  
+
+  <!-- Description -->
+  <div class="quran-desc">
+    <p>
+      <h1>কুরআন শিক্ষার গুরুত্ব ও প্রয়োজনীয়তা</h1><br>
+ কুরআন: মানব জীবনের দিশারী
+
+আল্লাহ্‌ তা’আলা পবিত্র কুরআন নাযিল করেছেন মানবজাতির হিদায়াতের জন্য। কুরআন শুধুমাত্র একটি ধর্মগ্রন্থ নয়; বরং এটি মানুষের জন্য পূর্ণাঙ্গ জীবনব্যবস্থা। সঠিকভাবে কুরআন শিক্ষা ছাড়া একজন মুসলমানের পক্ষে ইসলামের প্রকৃত শিক্ষা জানা ও পালন করা সম্ভব নয়।
+
+ <h2>কুরআন শিক্ষার গুরুত্ব</h2><br>
+
+ইবাদতের মূল শর্ত – সঠিক তাজবিদ ও উচ্চারণ ছাড়া কুরআন তিলাওয়াত সম্পূর্ণ হয় না। তাই নামাজ ও ইবাদত ঠিকভাবে আদায় করতে হলে কুরআন শিখা অপরিহার্য।
+
+আখলাক ও চরিত্র গঠন – কুরআনের শিক্ষা মানুষকে সত্যবাদিতা, ন্যায়পরায়ণতা, ধৈর্য, পরোপকারিতা ও শিষ্টাচার শেখায়।
+
+হিদায়াতের আলো – জীবনের প্রতিটি সমস্যার সমাধান কুরআনে রয়েছে। কুরআন অধ্যয়ন করলে সঠিক পথ পাওয়া যায়।
+
+আত্মিক প্রশান্তি – কুরআনের তিলাওয়াত হৃদয়কে প্রশান্ত করে, দুঃশ্চিন্তা দূর করে।
+
+দুনিয়া ও আখিরাতের কল্যাণ – কুরআনের শিক্ষা শুধু দুনিয়ার উন্নতি নয়, বরং আখিরাতের সফলতার নিশ্চয়তা দেয়।
+
+ শিশুদের জন্য কুরআন শিক্ষা কেন জরুরি?<br>
+
+ছোট বয়সে শেখা বিষয় সবচেয়ে সহজে মনে থাকে এবং দীর্ঘস্থায়ী হয়।
+
+শিশুদের চরিত্র গঠনের শ্রেষ্ঠ সময় হলো তাদের শৈশব। এই সময়ে কুরআন শিক্ষা দিলে তারা ইসলামের আলোয় বেড়ে উঠবে।
+
+প্রযুক্তির যুগে নৈতিক অবক্ষয় থেকে বাঁচাতে শিশুদেরকে কুরআনের শিক্ষা দেওয়া অত্যন্ত প্রয়োজনীয়।
+
+কুরআন শেখা শিশুদের মনোযোগ, শৃঙ্খলা ও আত্মনিয়ন্ত্রণ বৃদ্ধি করে।
+
+ কুরআন শিক্ষার প্রয়োজনীয়তা আজকের সমাজে
+
+বর্তমান যুগে মুসলিম পরিবারগুলো নানা সমস্যার সম্মুখীন হচ্ছে—নৈতিক অবক্ষয়, অশ্লীলতা, বিভ্রান্তি ও বিভেদ। এই চ্যালেঞ্জ মোকাবেলায় কুরআন শিক্ষার বিকল্প নেই। কুরআনের আলোয় শিশু ও তরুণ প্রজন্ম আল্লাহভীরু, সৎ ও দায়িত্বশীল নাগরিক হিসেবে গড়ে উঠতে পারে।
+
+ তাই কুরআন শিক্ষা শুধু ধর্মীয় দায়িত্ব নয়, বরং প্রতিটি মুসলিমের জন্য জীবন গঠনের অপরিহার্য অংশ
+    </p>
+  </div>
+
+</div>
+
+<!-- CSS -->
+<style>
+.academy-page {max-width:800px; margin:0 auto; font-family:sans-serif;}
+
+.accordion-btn {
+  width:100%; padding:12px; text-align:left;
+  border:none; outline:none; background:#008080; color:white;
+  font-size:16px; margin-top:5px; border-radius:5px; cursor:pointer;
+}
+.accordion-content {display:none; padding:10px; background:#f1f1f1; border-radius:5px;}
+
+.slider-container {width:100%; overflow:hidden; margin:20px 0;}
+.slider {display:flex; animation:slide 12s infinite;}
+.slider img {width:100%; flex-shrink:0; border-radius:10px;}
+
+@keyframes slide {
+  0% {transform:translateX(0);}
+  33% {transform:translateX(-100%);}
+  66% {transform:translateX(-200%);}
+  100% {transform:translateX(0);}
+}
+
+.admission-btn {
+  padding:12px 20px; background:#006400; color:white;
+  border:none; border-radius:8px; font-size:18px; cursor:pointer;
+}
+
+.form-popup {display:none; background:white; padding:20px; border:1px solid #ccc; border-radius:10px;}
+.form-popup input {width:100%; padding:8px; margin:5px 0; border:1px solid #ccc; border-radius:5px;}
+.form-popup button {margin-top:10px; padding:8px 12px; border:none; border-radius:5px; cursor:pointer;}
+
+.quran-desc {background:#f9f9f9; padding:15px; border-radius:10px; margin-top:20px;}
+  
+  .collapsible {
+  background-color: #198754;
+  color: white;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.active, .collapsible:hover {
+  background-color: #157347;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+</style>
+
+<!-- JS -->
+<script>
+  // Accordion Toggle
+  document.querySelectorAll('.accordion-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      let panel = btn.nextElementSibling;
+      panel.style.display = (panel.style.display==="block") ? "none" : "block";
+    });
+  });
+
+  // WhatsApp Submit
+  function sendToWhatsApp(e){
+    e.preventDefault();
+    let name    = document.getElementById("name").value;
+    let fthname    = document.getElementById("fthname").value;
+    let mthname    = document.getElementById("mthname").value;
+    let phone   = document.getElementById("phone").value;
+    let address = document.getElementById("address").value;
+    
+
+    // মেসেজ তৈরি
+    let msg = `ভর্তি আবেদন:%0Aনাম: ${name}%0Aপিতারনাম: ${fthname}%0Aমাতারনাম: ${mthname}%0Aমোবাইল: ${phone}%0Aঠিকানা: ${address}`;
+
+    // Encode করে পাঠানো (বাংলা/স্পেস ঠিক থাকবে)
+    let encoded = encodeURIComponent(msg);
+
+    // WhatsApp এ রিডাইরেক্ট
+    window.open("https://wa.me/8801610960746?text=" + encoded, "_blank");
+  }
+</script>
