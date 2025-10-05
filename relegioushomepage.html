@@ -1,0 +1,106 @@
+
+<!-- Academy Demo Page -->
+<div class="academy-page">
+
+  <!-- Title -->
+  <h1 class="page-title">ধর্মিয় শিক্ষা কেন্দ্র</h1>
+
+  <!-- Slider -->
+  <div class="slider-container">
+    <div class="slider">
+      <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQk26aIC9kWg7dLhCQXSspcoB4oGTNymJlp7Cgbwq4XmjdNvqsI" alt="Slide 1">
+      <img src="https://www.teachers.gov.bd/shared/frontend/blogs/images/2023-07-08/rBelJWVMYtY3Fd9juFIRkIkNFOgwcoqg02HMlB7R.jpg" alt="Slide 2">
+      <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ0wWXjQjdNvt_U0qzkkINYLW4BQw5JQe-yEIsr7UMr4g5SSaN1" alt="Slide 3">
+    </div>
+  </div>
+
+  <!-- Search & Filter -->
+  <div class="search-filter">
+    <input type="text" id="searchBox" placeholder="🔍 খুঁজুন...">
+    <button onclick="filterPosts('islam')">ইসলাম</button>
+    <button onclick="filterPosts('hindu')">সনাতন</button>
+  </div>
+
+  <!-- Posts -->
+  <div id="posts" class="posts">
+    <!-- Post 1 -->
+    <div class="post" data-type="islam">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrEiAez-298EQ3PZb5CgtHA-ZTAUyya-NEVSSVSCKCoBAUtUy7" alt="Post 1">
+      <h3>মক্তব</h3>
+      <p>এখানে অনলাইন ক্লাসের মাধ্যমে শিশুরা ঘরে বসে কুরআন ও ইসলামি আকিদা শিক্ষা করতে পারবে।</p>
+      <button onclick="location.href='https://www.banglasheba.com/2025/02/islami-academy.html'">বিস্তারিত</button>
+      <button>ভর্তি আবেদন</button>
+    </div>
+
+    <!-- Post 2 -->
+    <div class="post" data-type="hindu">
+      <img src="https://www.yesvedanta.com/wp-content/uploads/2025/03/veda-vyasa-compiling-vedas-mahabharata.jpg" alt="Post 2">
+      <h3>আশ্রম</h3>
+      <p>এখানে অনলাইন ক্লাসের মাধ্যমে শিশুরা ঘরে বসে মহাগ্রন্রহ ও সনাতনি নিয়ম নিতি শিক্ষা করতে পারবে।</p>
+      <button onclick="location.href='https://www.banglasheba.com/2025/02/Bangladesh.html'">বিস্তারিত</button>
+      <button>ভর্তি আবেদন</button>
+    </div>
+
+   
+
+<!-- CSS -->
+<style>
+.academy-page {max-width:900px; margin:0 auto; font-family:sans-serif; padding:10px;}
+.page-title {text-align:center; font-size:28px; margin-bottom:15px;}
+
+.slider-container {width:100%; overflow:hidden; margin-bottom:20px;}
+.slider {display:flex; animation:slide 12s infinite;}
+.slider img {width:100%; flex-shrink:0; border-radius:10px;}
+
+@keyframes slide {
+  0% {transform:translateX(0);}
+  33% {transform:translateX(-100%);}
+  66% {transform:translateX(-200%);}
+  100% {transform:translateX(0);}
+}
+
+.search-filter {text-align:center; margin-bottom:20px;}
+.search-filter input {
+  width:100%; padding:8px; border:1px solid #ccc; border-radius:5px; margin-right:5px;
+}
+.search-filter button {
+  padding:10px 12px; border:none; background:#008080; color:white;
+  border-radius:5px; cursor:pointer; margin:2px;
+}
+
+.posts {display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:15px;}
+.post {
+  background:#f9f9f9; padding:10px; border-radius:10px; text-align:center;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+.post img {width:100%; border-radius:8px; margin-bottom:10px;}
+.post h3 {margin:5px 0;}
+.post p {font-size:14px; color:#555;}
+.post button {
+  margin:5px; padding:8px 12px; border:none; border-radius:5px; cursor:pointer;
+  background:#006400; color:white;
+}
+</style>
+
+<!-- JS -->
+<script>
+  // Filter by button
+  function filterPosts(type){
+    document.querySelectorAll('.post').forEach(post=>{
+      if(type==="all" || post.dataset.type===type){
+        post.style.display="block";
+      } else {
+        post.style.display="none";
+      }
+    });
+  }
+
+  // Search
+  document.getElementById("searchBox").addEventListener("keyup", function(){
+    let value = this.value.toLowerCase();
+    document.querySelectorAll('.post').forEach(post=>{
+      let text = post.innerText.toLowerCase();
+      post.style.display = text.includes(value) ? "block" : "none";
+    });
+  });
+</script>
