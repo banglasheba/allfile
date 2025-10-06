@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>বস্ত্রদান সেবা</title>
+  <style>
+    body {font-family: Arial, sans-serif; background:#f5f5f5; margin:0; padding:0;}
+    header {background:#4CAF50; color:white; padding:15px; text-align:center;}
+    .donate-btn {background:#ff5722; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;}
+    .filters {padding:15px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; background:#fff;}
+    .filters input, .filters select {padding:8px; border:1px solid #ccc; border-radius:5px;}
+    .posts {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px; padding:15px;}
+    .card {background:white; border-radius:10px; padding:10px; box-shadow:0 2px 5px rgba(0,0,0,0.2);}
+    .card img {width:100%; height:150px; object-fit:cover; border-radius:10px;}
+    .card h3 {margin:5px 0;}
+    .order-btn {background:#4CAF50; color:white; padding:8px 12px; border:none; border-radius:5px; cursor:pointer;}
+    .locked {opacity:0.5; pointer-events:none;}
+    /* Modal */
+    .modal {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;}
+    .modal-content {background:white; padding:20px; border-radius:10px; width:90%; max-width:400px;}
+    .modal-content input, textarea, select {width:100%; margin-bottom:10px; padding:8px; border:1px solid #ccc; border-radius:5px;}
+    .close {float:right; cursor:pointer; color:red;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>বস্ত্রদান সেবা</h1>
+    <button class="donate-btn" onclick="openDonateForm()">বস্ত্রদান</button>
+  </header>
+
+  <!-- Filters -->
+  <div class="filters">
+    <input type="text" id="searchBox" placeholder="পণ্যের নাম বা ঠিকানা দিয়ে খুঁজুন..." onkeyup="filterPosts()">
+    <select id="areaFilter" onchange="filterPosts()">
+      <option value="">এলাকা নির্বাচন করুন</option>
+    </select>
+    <select id="catFilter" onchange="filterPosts()">
+      <option value="">ক্যাটাগরি নির্বাচন করুন</option>
+    </select>
+  </div>
+
+  <!-- Posts -->
+  <div id="posts" class="posts"></div>
+
+  <!-- Donate Form Modal -->
+  <div id="donateModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeDonateForm()">✖</span>
+      <h3>বস্ত্রদান ফর্ম</h3>
+      <input type="text" id="dPname" placeholder="পণ্যের নাম">
+      <input type="text" id="dAddress" placeholder="ঠিকানা/এলাকা">
+      <input type="text" id="dWhatsapp" placeholder="WhatsApp নাম্বার">
+      <input type="text" id="dCategory" placeholder="ক্যাটাগরি (শার্ট/শাড়ি)">
+      <input type="text" id="dCode" placeholder="পণ্যের কোড (ইউনিক)">
+      <textarea id="dDescription" placeholder="বর্ণনা"></textarea>
+      <input type="text" id="dImage" placeholder="ছবির লিংক">
+      <button onclick="submitDonate()">সাবমিট</button>
+    </div>
+  </div>
+
+  <!-- Order Form Modal -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeOrderForm()">✖</span>
+      <h3>অর্ডার ফর্ম</h3>
+      <input type="hidden" id="orderItemCode">
+      <input type="hidden" id="orderWhatsapp">
+      <input type="text" id="oName" placeholder="আপনার নাম">
+      <input type="text" id="oAddress" placeholder="আপনার ঠিকানা">
+      <input type="text" id="oPhone" placeholder="আপনার ফোন">
+      <button onclick="submitOrder()">সাবমিট</button>
+    </div>
+  </div>
+
+  <script>
+    const sheetURL="https://opensheet.elk.sh/1r3x6Mt1zPoz4PXmlB25R5qfzLmpO0XJU3MAIGg7MdeE/Sheet1"; // এখানে আপনার শিট আইডি বসান
+    let data=[];
+
+    // Load Data
+    fetch(sheetURL)
+    .then(res=>res.json())
+    .then(json=>{
+      data=json;
+      loadPosts();
+    });
+
+    function loadPosts(){
+      const container=document.getElementById("posts");
+      container.innerHTML="";
+      let areas=new Set();
+      let cats=new Set();
+
+      data.forEach(item=>{
+        if(!item.Locked || item.Locked!=="yes"){ // অর্ডার লক না থাকলে দেখাবে
+          const card=document.createElement("div");
+          card.className="card";
+          card.dataset.area=item.Address;
+          card.dataset.cat=item.Category;
+          card.dataset.code=item.Code;
+          card.innerHTML=`
+            <img src="${item.Image}" alt="product">
+            <h3>${item.Pname}</h3>
+            <p>ঠিকানা: ${item.Address}<br>ক্যাটাগরি: ${item.Category}</p>
+            <p>${item.Description}</p>
+            <button class="order-btn" onclick='openOrderForm(${JSON.stringify(item)})'>অর্ডার</button>
+          `;
+          container.appendChild(card);
+          if(item.Address) areas.add(item.Address);
+          if(item.Category) cats.add(item.Category);
+        }
+      });
+
+      // Dropdown populate
+      const areaSelect=document.getElementById("areaFilter");
+      const catSelect=document.getElementById("catFilter");
+      areaSelect.innerHTML="<option value=''>এলাকা নির্বাচন করুন</option>";
+      catSelect.innerHTML="<option value=''>ক্যাটাগরি নির্বাচন করুন</option>";
+      areas.forEach(a=>{let opt=document.createElement("option");opt.value=a;opt.textContent=a;areaSelect.appendChild(opt);});
+      cats.forEach(c=>{let opt=document.createElement("option");opt.value=c;opt.textContent=c;catSelect.appendChild(opt);});
+    }
+
+    function filterPosts(){
+      let search=document.getElementById("searchBox").value.toLowerCase();
+      let area=document.getElementById("areaFilter").value;
+      let cat=document.getElementById("catFilter").value;
+      document.querySelectorAll(".card").forEach(card=>{
+        let match=true;
+        if(search && !card.innerText.toLowerCase().includes(search)) match=false;
+        if(area && card.dataset.area!==area) match=false;
+        if(cat && card.dataset.cat!==cat) match=false;
+        card.style.display=match?"block":"none";
+      });
+    }
+
+    // Donate Form
+    function openDonateForm(){document.getElementById("donateModal").style.display="flex";}
+    function closeDonateForm(){document.getElementById("donateModal").style.display="none";}
+    function submitDonate(){
+  const data = {
+    Pname: document.getElementById("dPname").value,
+    Address: document.getElementById("dAddress").value,
+    Whatsapp: document.getElementById("dWhatsapp").value,
+    Category: document.getElementById("dCategory").value,
+    Code: document.getElementById("dCode").value,
+    Description: document.getElementById("dDescription").value,
+    Image: document.getElementById("dImage").value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbxwIxBU-4jy7GAXftuJoNn8LShPo88fSP51OkWLsJee6cYWJhZWX6kg5xKqWQcLynXo/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(res => res.text())
+  .then(msg => {
+    alert("সফলভাবে সাবমিট হয়েছে!");
+    closeDonateForm();
+  })
+  .catch(err => alert("ত্রুটি ঘটেছে: "+err));
+}
+
+    // Order Form
+    function openOrderForm(item){
+      document.getElementById("orderModal").style.display="flex";
+      document.getElementById("orderItemCode").value=item.Code;
+      document.getElementById("orderWhatsapp").value=item.Whatsapp;
+    }
+    function closeOrderForm(){document.getElementById("orderModal").style.display="none";}
+    function submitOrder(){
+      let name=document.getElementById("oName").value;
+      let address=document.getElementById("oAddress").value;
+      let phone=document.getElementById("oPhone").value;
+      let code=document.getElementById("orderItemCode").value;
+      let whatsapp=document.getElementById("orderWhatsapp").value;
+
+      let msg=`আমি বস্ত্র নিতে চাই\nনাম: ${name}\nঠিকানা: ${address}\nফোন: ${phone}\nপণ্যের কোড: ${code}`;
+      window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`);
+
+      lockPost(code);
+      closeOrderForm();
+    }
+
+    function lockPost(code){
+      let cards=document.querySelectorAll(".card");
+      cards.forEach(card=>{
+        if(card.dataset.code===code){
+          card.classList.add("locked");
+          let btn=card.querySelector(".order-btn");
+          btn.disabled=true;
+          btn.innerText="অর্ডার সম্পন্ন হয়েছে";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
