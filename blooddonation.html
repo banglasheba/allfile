@@ -55,7 +55,11 @@
     <option>O+</option><option>O-</option>
     <option>AB+</option><option>AB-</option>
   </select>
-  <textarea id="desc" placeholder="বর্ণনা"></textarea>
+  <select id="area" required>
+    <option value="">এরিয়া</option>
+    <option>মিরসারাই</option><option>সিতাকুন্ড</option>
+    <option></option><option></option>
+  </select>
   <input type="url" id="imageLink" placeholder="ছবির লিংক">
   <button type="submit" class="btn">সাবমিট</button>
 </form>
@@ -64,7 +68,7 @@
 <div class="filters">
   <input type="text" id="searchBox" class="search-box" placeholder="নাম বা ঠিকানা দিয়ে খুঁজুন..." onkeyup="filterPosts()">
   <select id="areaFilter" onchange="filterPosts()">
-    <option value="">এলাকা</option>
+    <option value="">এরিয়া</option>
   </select>
   <select id="bloodFilter" onchange="filterPosts()">
     <option value="">রক্তের গ্রুপ</option>
@@ -101,7 +105,7 @@
       address: document.getElementById("address").value,
       phone: document.getElementById("phone").value,
       blood: document.getElementById("bloodGroup").value,
-      desc: document.getElementById("desc").value,
+      desc: document.getElementById("area").value,
       image: document.getElementById("imageLink").value
     };
 
