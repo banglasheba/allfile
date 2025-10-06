@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>রক্তদান সেবা</title>
+  <style>
+    body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9;}
+    header {background:linear-gradient(90deg,#b30000,#ff4d4d); color:white; padding:20px; text-align:center;}
+    header h1 {margin:0; font-size:28px;}
+    .slider {width:100%; overflow:hidden;}
+    .slider img {width:100%; display:none;}
+    .active {display:block;}
+    .btn {display:inline-block; margin:20px auto; padding:12px 20px; background:#b30000; color:white; border:none; border-radius:5px; cursor:pointer;}
+    form {display:none; background:#fff; padding:20px; margin:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+    form input, form select, form textarea {width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:5px;}
+    .filters {display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin:20px;}
+    select, .search-box {padding:10px; border:1px solid #ccc; border-radius:5px;}
+    .search-box {flex:1; min-width:200px;}
+    .posts {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; padding:20px;}
+    .card {background:white; border-radius:10px; padding:15px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+    .card img {width:100%; border-radius:10px;}
+    .card h3 {margin:10px 0 5px;}
+    .card p {font-size:14px; color:#555;}
+    .call-btn {display:block; text-align:center; background:#28a745; color:white; padding:10px; border-radius:5px; margin-top:10px; text-decoration:none;}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>রক্তদান সেবা</h1>
+</header>
+
+<!-- Image Slider -->
+<div class="slider">
+  <img src="https://via.placeholder.com/1200x400/ff0000/ffffff?text=Blood+Donation+1" class="active">
+  <img src="https://via.placeholder.com/1200x400/cc0000/ffffff?text=Blood+Donation+2">
+  <img src="https://via.placeholder.com/1200x400/990000/ffffff?text=Blood+Donation+3">
+</div>
+
+<!-- Blood Donation Button -->
+<div style="text-align:center;">
+  <button class="btn" onclick="toggleForm()">Blood Donation</button>
+</div>
+
+<!-- Donation Form -->
+<form id="donationForm" onsubmit="submitForm(event)">
+  <input type="text" id="name" placeholder="নাম" required>
+  <input type="text" id="address" placeholder="ঠিকানা" required>
+  <input type="tel" id="phone" placeholder="ফোন" required>
+  <select id="bloodGroup" required>
+    <option value="">রক্তের গ্রুপ</option>
+    <option>A+</option><option>A-</option>
+    <option>B+</option><option>B-</option>
+    <option>O+</option><option>O-</option>
+    <option>AB+</option><option>AB-</option>
+  </select>
+  <textarea id="desc" placeholder="বর্ণনা"></textarea>
+  <input type="url" id="imageLink" placeholder="ছবির লিংক">
+  <button type="submit" class="btn">সাবমিট</button>
+</form>
+
+<!-- Filters -->
+<div class="filters">
+  <input type="text" id="searchBox" class="search-box" placeholder="নাম বা ঠিকানা দিয়ে খুঁজুন..." onkeyup="filterPosts()">
+  <select id="areaFilter" onchange="filterPosts()">
+    <option value="">এলাকা</option>
+  </select>
+  <select id="bloodFilter" onchange="filterPosts()">
+    <option value="">রক্তের গ্রুপ</option>
+  </select>
+</div>
+
+<!-- Posts (Google Sheet থেকে লোড হবে) -->
+<div class="posts" id="posts"></div>
+
+<script>
+  // Slider
+  let index=0;
+  const slides=document.querySelectorAll(".slider img");
+  setInterval(()=>{
+    slides[index].classList.remove("active");
+    index=(index+1)%slides.length;
+    slides[index].classList.add("active");
+  },3000);
+
+  // Toggle Form
+  function toggleForm(){
+    const form=document.getElementById("donationForm");
+    form.style.display=form.style.display==="block"?"none":"block";
+  }
+
+  // form Submit
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxWdKZKbki5NqFoMaoCogxzCPBKfXUJ0TPUEiCdEuHWCHjNUPetKTGSXhmz4vU-Dpp5/exec";
+
+  async function submitForm(e){
+    e.preventDefault();
+
+    const data = {
+      name: document.getElementById("name").value,
+      address: document.getElementById("address").value,
+      phone: document.getElementById("phone").value,
+      blood: document.getElementById("bloodGroup").value,
+      desc: document.getElementById("desc").value,
+      image: document.getElementById("imageLink").value
+    };
+
+    try {
+      const res = await fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",   // ✅ CORS সমস্যা এড়াতে
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      alert("✅ Donor successfully added");
+      document.getElementById("donationForm").reset();
+
+    } catch (err) {
+      alert("⚠️ Error: " + err.message);
+    }
+  }
+
+  // Sheet থেকে ডেটা লোড
+  const sheetURL = "https://opensheet.elk.sh/1SuyUnxhhTb4wrh7vQHJVpy3RaD16TQJaC2RgVJ82GDY/Sheet1";
+
+  async function loadPosts(){
+    const res = await fetch(sheetURL);
+    const data = await res.json();
+    const container = document.getElementById("posts");
+    container.innerHTML = "";
+
+    let areas = new Set();
+    let bloodGroups = new Set();
+
+    data.forEach(donor=>{
+      const card = document.createElement("div");
+      card.className = "card";
+      card.dataset.area = donor.Area;
+      card.dataset.blood = donor.BloodGroup;
+      card.innerHTML = `
+        <img src="${donor.Image}" alt="donor">
+        <h3>${donor.Name}</h3>
+        <p>ঠিকানা: ${donor.Address}<br>রক্তের গ্রুপ: ${donor.BloodGroup}</p>
+        <p>${donor.Description || ""}</p>
+        <a href="tel:${donor.Phone}" class="call-btn">Call</a>
+      `;
+      container.appendChild(card);
+
+      if(donor.Area) areas.add(donor.Area);
+      if(donor.BloodGroup) bloodGroups.add(donor.BloodGroup);
+    });
+
+    // Dropdown Auto Generate
+    const areaSelect=document.getElementById("areaFilter");
+    const bloodSelect=document.getElementById("bloodFilter");
+    areas.forEach(a=>{
+      let opt=document.createElement("option");
+      opt.value=a; opt.textContent=a;
+      areaSelect.appendChild(opt);
+    });
+    bloodGroups.forEach(b=>{
+      let opt=document.createElement("option");
+      opt.value=b; opt.textContent=b;
+      bloodSelect.appendChild(opt);
+    });
+  }
+
+  // Filter Posts + Search
+  function filterPosts(){
+    const area=document.getElementById("areaFilter").value.toLowerCase();
+    const blood=document.getElementById("bloodFilter").value.toLowerCase();
+    const search=document.getElementById("searchBox").value.toLowerCase();
+    const cards=document.querySelectorAll(".card");
+
+    cards.forEach(card=>{
+      const matchArea= !area || card.dataset.area.toLowerCase()===area;
+      const matchBlood= !blood || card.dataset.blood.toLowerCase()===blood;
+      const matchSearch= !search || card.innerText.toLowerCase().includes(search);
+      card.style.display=(matchArea && matchBlood && matchSearch)?"block":"none";
+    });
+  }
+
+  loadPosts();
+</script>
+
+</body>
+</html>
