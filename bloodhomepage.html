@@ -1,0 +1,172 @@
+<div class="bd-location-page">
+  
+  <!-- Title -->
+  <h1 class="page-title">বস্রদান কেন্দ্র</h1>
+  
+  <!-- Slider -->
+  <div class="slider-container">
+    <div class="slider">
+      <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQk26aIC9kWg7dLhCQXSspcoB4oGTNymJlp7Cgbwq4XmjdNvqsI" alt="Slide 1">
+      <img src="https://www.teachers.gov.bd/shared/frontend/blogs/images/2023-07-08/rBelJWVMYtY3Fd9juFIRkIkNFOgwcoqg02HMlB7R.jpg" alt="Slide 2">
+      <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ0wWXjQjdNvt_U0qzkkINYLW4BQw5JQe-yEIsr7UMr4g5SSaN1" alt="Slide 3">
+    </div>
+  </div>
+  <br>
+  
+  <!-- 🔍 Search -->
+  <input type="text" id="searchBox" placeholder="বিভাগ বা জেলা লিখে খুঁজুন..." />
+<br>
+  <!-- 🌏 Division Section -->
+  <div class="division-list">
+    
+    <!-- ঢাকা বিভাগ -->
+    <div class="division">
+      <h3 class="division-title" onclick="toggleDistricts(this)">📍 ঢাকা বিভাগ</h3>
+      <div class="district-list">
+        <a href="https://example.com/dhaka" class="district">ঢাকা</a>
+        <a href="https://example.com/gazipur" class="district">গাজীপুর</a>
+        <a href="https://example.com/narayanganj" class="district">নারায়ণগঞ্জ</a>
+        <a href="https://example.com/faridpur" class="district">ফরিদপুর</a>
+      </div>
+    </div>
+
+    <!-- চট্টগ্রাম বিভাগ -->
+    <div class="division">
+      <h3 class="division-title" onclick="toggleDistricts(this)">🌊 চট্টগ্রাম বিভাগ</h3>
+      <div class="district-list">
+        <a href="https://example.com/chattogram" class="district">চট্টগ্রাম</a>
+        <a href="https://example.com/coxbazar" class="district">কক্সবাজার</a>
+        <a href="https://example.com/feni" class="district">ফেনী</a>
+      </div>
+    </div>
+
+    <!-- খুলনা বিভাগ -->
+    <div class="division">
+      <h3 class="division-title" onclick="toggleDistricts(this)">⚓ খুলনা বিভাগ</h3>
+      <div class="district-list">
+        <a href="https://example.com/khulna" class="district">খুলনা</a>
+        <a href="https://example.com/jashore" class="district">যশোর</a>
+        <a href="https://example.com/satkhira" class="district">সাতক্ষীরা</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+ <!-- collapsible -->
+<div style="text-align: center; margin-top: 50px;">
+ <details>
+  <summary style="cursor: pointer; padding: 8px 12px; background:#007bff; color:#fff; border-radius:6px; display:inline-block;">
+    বিস্তারিত দেখুন
+  </summary>
+  <p style="margin:10px 0 0 0;">
+    এখানে তোমার প্যারাগ্রাফের বিষয়বস্তু থাকবে। ক্লিক করলে এটি collapse/expand হবে।
+  </p>
+</details>
+</div>
+<br>
+<br>
+<!--paragrap-->
+
+<p style="margin:10px 0 0 0;">
+    এখানে তোমার প্যারাগ্রাফের বিষয়বস্তু থাকবে। ক্লিক করলে এটি collapse/expand হবে।
+  </p>
+
+<!-- 🌈 CSS -->
+<style>
+.bd-location-page {
+  max-width: 800px;
+  margin: auto;
+  font-family: 'Noto Sans Bengali', sans-serif;
+  padding: 15px;
+}
+  .page-title {text-align:center; font-size:28px; margin-bottom:15px;}
+#searchBox {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+.slider-container {width:100%; overflow:hidden; margin-bottom:20px;}
+.slider {display:flex; animation:slide 12s infinite;}
+.slider img {width:100%; flex-shrink:0; border-radius:10px;}
+
+@keyframes slide {
+  0% {transform:translateX(0);}
+  33% {transform:translateX(-100%);}
+  66% {transform:translateX(-200%);}
+  100% {transform:translateX(0);}
+}
+  
+.division {
+  background: #f8f9fa;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.division-title {
+  background: linear-gradient(135deg,#009688,#00796b);
+  color: white;
+  padding: 12px 15px;
+  margin: 0;
+  font-size: 18px;
+  cursor: pointer;
+  user-select: none;
+}
+.district-list {
+  display: none;
+  padding: 10px;
+  animation: fadeIn .4s ease;
+}
+.district {
+  display: inline-block;
+  margin: 5px;
+  padding: 8px 12px;
+  background: #e0f2f1;
+  color: #004d40;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.district:hover {
+  background: #009688;
+  color: white;
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@media (max-width:600px){
+  .district {font-size:14px; padding:7px 10px;}
+}
+</style>
+
+<!-- ⚙️ JS -->
+<script>
+function toggleDistricts(el){
+  const next = el.nextElementSibling;
+  const open = document.querySelectorAll('.district-list');
+  open.forEach(x => { if(x !== next) x.style.display = 'none'; });
+  next.style.display = (next.style.display==='block') ? 'none' : 'block';
+}
+
+// 🔍 Search Filter
+document.getElementById("searchBox").addEventListener("input", function(){
+  const query = this.value.toLowerCase();
+  document.querySelectorAll(".division").forEach(div => {
+    const title = div.querySelector(".division-title").textContent.toLowerCase();
+    const districts = div.querySelectorAll(".district");
+    let found = false;
+    districts.forEach(d => {
+      const text = d.textContent.toLowerCase();
+      d.style.display = text.includes(query) || title.includes(query) ? "inline-block" : "none";
+      if(text.includes(query) || title.includes(query)) found = true;
+    });
+    div.style.display = found || title.includes(query) ? "block" : "none";
+    div.querySelector(".district-list").style.display = query ? "block" : "none";
+  });
+});
+</script>
