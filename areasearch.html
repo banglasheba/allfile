@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>শপিং</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    /* সার্চবার স্টাইল */
+    #searchInput {
+      width: 100%;
+      padding: 5px;
+      font-size: 16px;
+      border: 2px solid #007BFF;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+    /* বিভাগ বাটন স্টাইল */
+    .category-btn {
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .category-btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* জেলা ও উপজেলা লিস্ট স্টাইল */
+    .district-list, .upazila-list {
+      margin-top: 10px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .district-btn, .upazila-btn {
+      display: block;
+      padding: 8px 12px;
+      margin: 5px 0;
+      background-color: #f1f1f1;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 15px;
+    }
+
+    .district-btn:hover, .upazila-btn:hover {
+      background-color: #ddd;
+    }
+
+    /* Hide by default */
+    .district-list, .upazila-list {
+      display: none;
+    }
+
+    /* Two row layout for category buttons */
+    .category-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+<h2>শপিং</h2>
+
+<input type="text" id="searchInput" placeholder="খোজ করুন...">
+
+<!-- বিভাগ বাটন -->
+<div class="category-container">
+  <button class="category-btn" data-category="chittagong">চট্টগ্রাম</button>
+  <button class="category-btn" data-category="dhaka">ঢাকা</button>
+</div>
+
+<!-- জেলা এবং উপজেলা লিস্ট -->
+<div id="areaContainer">
+  <!-- ঢাকা বিভাগ -->
+  <ul class="district-list" data-category="dhaka">
+    <li>
+      <button class="district-btn" data-district="dhaka">ঢাকা</button>
+      <ul class="upazila-list">
+        <li><a class="upazila-btn" href="academy.html">ধানমন্ডি</a></li>
+        <li><a class="upazila-btn" href="page_gulshan.html">গুলশান</a></li>
+        <li><a class="upazila-btn" href="page_mirpur.html">মিরপুর</a></li>
+      </ul>
+    </li>
+    
+  </ul>
+
+  <!-- চট্টগ্রাম বিভাগ  -->
+  <ul class="district-list" data-category="chittagong">
+    <li>
+      <button class="district-btn" data-district="chittagong">চট্টগ্রাম</button>
+      <ul class="upazila-list">
+        <li><a class="upazila-btn" href="page_gulshan.html">মিরসারাই</a></li>
+        <li><a class="upazila-btn" href="page_mirpur.html">সিতাকুন্ড</a></li>
+      </ul>
+    </li>
+    
+  </ul>
+</div>
+
+<script>
+  // বিভাগ বাটনে ক্লিক করলে জেলা দেখাবে
+  const categoryBtns = document.querySelectorAll('.category-btn');
+  const districtLists = document.querySelectorAll('.district-list');
+
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.getAttribute('data-category');
+      districtLists.forEach(list => {
+        if(list.getAttribute('data-category') === cat){
+          list.style.display = list.style.display === 'block' ? 'none' : 'block';
+        } else {
+          list.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // জেলা বাটনে ক্লিক করলে উপজেলা দেখাবে
+  const districtBtns = document.querySelectorAll('.district-btn');
+  districtBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const upazilaList = btn.nextElementSibling;
+      if(upazilaList.style.display === 'block'){
+        upazilaList.style.display = 'none';
+      } else {
+        upazilaList.style.display = 'block';
+      }
+    });
+  });
+
+  // সার্চ বার ফিল্টার (জেলা ও উপজেলা উভয়ই)
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('keyup', function() {
+    const filter = searchInput.value.toLowerCase();
+    districtLists.forEach(list => {
+      let districtMatch = false;
+      const districts = list.querySelectorAll('.district-btn');
+      districts.forEach(district => {
+        const districtName = district.textContent.toLowerCase();
+        const upazilas = district.nextElementSibling.querySelectorAll('.upazila-btn');
+        let upazilaMatch = false;
+
+        upazilas.forEach(upazila => {
+          if(upazila.textContent.toLowerCase().includes(filter)){
+            upazila.style.display = '';
+            upazilaMatch = true;
+          } else {
+            upazila.style.display = 'none';
+          }
+        });
+
+        if(districtName.includes(filter) || upazilaMatch){
+          district.style.display = '';
+          district.nextElementSibling.style.display = upazilaMatch ? 'block' : 'none';
+          districtMatch = true;
+        } else {
+          district.style.display = 'none';
+          district.nextElementSibling.style.display = 'none';
+        }
+      });
+      list.style.display = districtMatch ? 'block' : 'none';
+    });
+  });
+</script>
+
+</body>
+</html>
