@@ -8,6 +8,18 @@
     body {font-family: Arial, sans-serif; background:#f5f5f5; margin:0; padding:0;}
     header {background:#4CAF50; color:white; padding:15px; text-align:center;}
     .donate-btn {background:#ff5722; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;}
+    
+    .slider-container {width:100%; overflow:hidden; margin-bottom:20px;}
+.slider {display:flex; animation:slide 12s infinite;}
+.slider img {width:100%; flex-shrink:0; border-radius:10px;}
+
+@keyframes slide {
+  0% {transform:translateX(0);}
+  33% {transform:translateX(-100%);}
+  66% {transform:translateX(-200%);}
+  100% {transform:translateX(0);}
+}
+
     .filters {padding:15px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; background:#fff;}
     .filters input, .filters select {padding:8px; border:1px solid #ccc; border-radius:5px;}
     .posts {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px; padding:15px;}
@@ -18,7 +30,7 @@
     .locked {opacity:0.5; pointer-events:none;}
     /* Modal */
     .modal {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;}
-    .modal-content {background:white; padding:20px; border-radius:10px; width:90%; max-width:400px;}
+    .modal-content {background:white; padding:20px; border-radius:10px; width:90%; max-width:700px;}
     .modal-content input, textarea, select {width:100%; margin-bottom:10px; padding:8px; border:1px solid #ccc; border-radius:5px;}
     .close {float:right; cursor:pointer; color:red;}
   </style>
@@ -26,6 +38,31 @@
 <body>
   <header>
     <h1>বস্ত্রদান সেবা</h1>
+    <div style="text-align: center; margin-top: 50px;">
+ <details>
+  <summary style="cursor: pointer; padding: 8px 12px; background:#007bff; color:#fff; border-radius:6px; display:inline-block;">
+    বস্রদান সেবা সম্পর্কে
+  </summary>
+  <p style="margin:10px 0 0 0;">
+    গোপনীয়তা নীতি (Privacy Policy)
+
+ অনুযায়ী পরিচালিত হয়।
+  </p>
+</details>
+</div>
+  </header>
+  
+  <!-- Slider -->
+  <div class="slider-container">
+    <div class="slider">
+      <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQk26aIC9kWg7dLhCQXSspcoB4oGTNymJlp7Cgbwq4XmjdNvqsI" alt="Slide 1">
+      <img src="https://www.teachers.gov.bd/shared/frontend/blogs/images/2023-07-08/rBelJWVMYtY3Fd9juFIRkIkNFOgwcoqg02HMlB7R.jpg" alt="Slide 2">
+      <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ0wWXjQjdNvt_U0qzkkINYLW4BQw5JQe-yEIsr7UMr4g5SSaN1" alt="Slide 3">
+    </div>
+  </div>
+  
+  <!-- Donation button -->
+  <header>
     <button class="donate-btn" onclick="openDonateForm()">বস্ত্রদান</button>
   </header>
 
