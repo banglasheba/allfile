@@ -8,9 +8,16 @@
     body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9;}
     header {background:linear-gradient(90deg,#b30000,#ff4d4d); color:white; padding:20px; text-align:center;}
     header h1 {margin:0; font-size:28px;}
-    .slider {width:100%; overflow:hidden;}
-    .slider img {width:100%; display:none;}
-    .active {display:block;}
+    .slider-container {width:100%; overflow:hidden; margin-bottom:20px;}
+.slider {display:flex; animation:slide 12s infinite;}
+.slider img {width:100%; flex-shrink:0; border-radius:10px;}
+
+@keyframes slide {
+  0% {transform:translateX(0);}
+  33% {transform:translateX(-100%);}
+  66% {transform:translateX(-200%);}
+  100% {transform:translateX(0);}
+}
     .btn {display:inline-block; margin:20px auto; padding:12px 20px; background:#b30000; color:white; border:none; border-radius:5px; cursor:pointer;}
     form {display:none; background:#fff; padding:20px; margin:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
     form input, form select, form textarea {width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:5px;}
@@ -29,14 +36,30 @@
 
 <header>
   <h1>রক্তদান সেবা</h1>
+  <div style="text-align: center; margin-top: 50px;">
+ <details>
+  <summary style="cursor: pointer; padding: 8px 12px; background:#007bff; color:#fff; border-radius:6px; display:inline-block;">
+    রক্তদান সেবা সম্পর্কে
+  </summary>
+  <p style="margin:10px 0 0 0;">
+    গোপনীয়তা নীতি (Privacy Policy)
+
+
+  </p>
+</details>
+</div>
 </header>
 
 <!-- Image Slider -->
-<div class="slider">
-  <img src="https://via.placeholder.com/1200x400/ff0000/ffffff?text=Blood+Donation+1" class="active">
-  <img src="https://via.placeholder.com/1200x400/cc0000/ffffff?text=Blood+Donation+2">
-  <img src="https://via.placeholder.com/1200x400/990000/ffffff?text=Blood+Donation+3">
-</div>
+  
+<!-- Slider -->
+  <div class="slider-container">
+    <div class="slider">
+      <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSc6C90d1klfVSceO-PkxQdc923YBqps-Z9Zoxqs1nJSNOcD-Iu" alt="Slide 1">
+      <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRuhvJqX9F6rfxf5hLSyLgocs-hGSTJBJTDLpeBm8SlH-4VVWvz" alt="Slide 2">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTETBjkYiEKFy7XN5Blf6ji6IGaFq6E6hk8cg&s" alt="Slide 3">
+    </div>
+  </div>
 
 <!-- Blood Donation Button -->
 <div style="text-align:center;">
@@ -57,7 +80,7 @@
   </select>
   <select id="area" required>
     <option value="">এরিয়া</option>
-    <option>মিরসারাই</option><option>সিতাকুন্ড</option>
+    <option>চট্টগ্রাম</option><option>কক্সবাজার</option>
     <option></option><option></option>
   </select>
   <input type="url" id="imageLink" placeholder="ছবির লিংক">
