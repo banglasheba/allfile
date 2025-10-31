@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>পাঠাগার</title>
+  <style>
+    body {font-family: Arial, sans-serif; background:#f5f5f5; margin:0; padding:0;}
+    header {background:#4CAF50; color:white; padding:15px; text-align:center;}
+    .donate-btn {background:#ff5722; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;}
+    
+    .slider-container {width:100%; overflow:hidden; margin-bottom:20px;}
+    .slider {display:flex; animation:slide 12s infinite;}
+    .slider img {width:100%; flex-shrink:0; border-radius:10px;}
+    @keyframes slide {
+      0% {transform:translateX(0);}
+      33% {transform:translateX(-100%);}
+      66% {transform:translateX(-200%);}
+      100% {transform:translateX(0);}
+    }
+
+    .filters {padding:15px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; background:#fff;}
+    .filters input, .filters select {padding:8px; border:1px solid #ccc; border-radius:5px;}
+    .posts {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px; padding:15px;}
+    .card {background:white; border-radius:10px; padding:10px; box-shadow:0 2px 5px rgba(0,0,0,0.2);}
+    .card img {width:100%; height:150px; object-fit:cover; border-radius:10px;}
+    .card h3 {margin:5px 0;}
+    .order-btn {background:#4CAF50; color:white; padding:8px 12px; border:none; border-radius:5px; cursor:pointer;}
+    .locked {opacity:0.5; pointer-events:none;}
+    
+    /* Modal */
+    .modal {display:none; position:fixed; top:0; left:0; width:70%; height:80%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;}
+    .modal-content {background:white; padding:20px; border-radius:10px; width:90%; max-width:700px;}
+    .modal-content input, textarea, select {width:100%; margin-bottom:10px; padding:8px; border:1px solid #ccc; border-radius:5px;}
+    .close {float:right; cursor:pointer; color:red;}
+    #loadMoreBtn {display:block; margin:20px auto; background:#007bff; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1> পাঠাগার</h1>
+    <div style="text-align: center; margin-top: 50px;">
+      <details>
+        <summary style="cursor: pointer; padding: 8px 12px; background:#007bff; color:#fff; border-radius:6px; display:inline-block;">
+          পাঠাগার সম্পর্কে
+        </summary>
+        <p style="margin:10px 0 0 0;">
+          আমাদের সমাজে এমন অসংখ্য মানুষ আছে, ।</b>
+        </p>
+      </details>
+    </div>
+  </header>
+  
+  <!-- Slider -->
+  <div class="slider-container">
+    <div class="slider">
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxn07VGc8sA7c9oZkBdJCO7sjAzHfJXWpJa_RrSSfO83ia5YL9" alt="Slide 1">
+      <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRRhsvpWuIc_vKIlTtLUvGIhwtdBVFIzw8msPrUq8N1WYre3r2m" alt="Slide 2">
+      <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR_at3CpM4v-3V2m1c0nZy3xqysxMbUUNbpiTt46ux3x8psYCQ_" alt="Slide 3">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv5-gn5vNsY-fvOrYSx40fgTyl4PzkAzPR3GFyHgo8ypDOxm6-" alt="Slide 4">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhYNfFmK3rXx23xsmCnNISB1MykSPjauoefA&s" alt="Slide 5">
+     <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQKiCy1fdDcInY8NXQODm8fLTN4pYDqyQgPUUtrksK5pTQ2Gi_E" alt="Slide 1">
+      <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSACzXwClZMFbkTpeJGutEkMwqYjE6A1gveqFaO7uo2lMGDQ-uI" alt="Slide 2">
+      <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTZOMNEtSZo4Ect6kZzxjSoM_3xuRdOYqaKzDckF8oXzcy8BNnB" alt="Slide 3">
+      <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTmh6dKCS4CTzKde85HK4CN75Mi2Ig5GlV4OgJA5rMJGf_7XMVu" alt="Slide 1">
+      <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQSXH35T705OH2gnEwAhtcdscR0FViJf2fkx8UCPBDWaIM57PRa" alt="Slide 2">
+    </div>
+  </div>
+  
+  <!-- Donation button -->
+  <header>
+   <button class="donate-btn" onclick="openDonateForm()"> এড করুন</button>
+  </header>
+
+  <!-- Filters -->
+  <div class="filters">
+    <input type="text" id="searchBox" placeholder="নাম দিয়ে খুঁজুন..." onkeyup="filterPosts()">
+    <select id="areaFilter" onchange="filterPosts()">
+      <option value="">লেভেল নির্বাচন করুন</option>
+    </select>
+    <select id="catFilter" onchange="filterPosts()">
+      <option value="">ক্যাটাগরি নির্বাচন করুন</option>
+    </select>
+  </div>
+
+  <!-- Posts -->
+  <div id="posts" class="posts"></div>
+  <button id="loadMoreBtn" onclick="loadMore()">আরও দেখুন</button>
+
+  <!-- Donate Form Modal -->
+  <div id="donateModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeDonateForm()">✖</span>
+      <h3>ক্লাস বই যোগ করুন</h3>
+      <input type="text" id="dPname" placeholder="পণ্যের নাম">
+      <select id="dAddress" required onchange="updateCategory()">  
+      <option value="">বই লেভেল</option>  
+      <option value="class">ক্লাস বই</option>  
+      <option value="islamic">ইসলামি বই</option>  
+      <option value="sanatani">সনাতনী বই</option>  
+        <option value="book">সকল বই</option> 
+    </select> 
+      
+      <select id="dCategory" required>  
+      <option value=""> কেটাগরি</option>  
+    </select>
+      <input type="text" id="dCode" placeholder="৬ ডিজিট কোড (ইচ্ছানুযায়ি)">
+      <textarea id="dDescription" placeholder="বই সম্পর্কে বর্ণনা"></textarea>
+      <input type="text" id="dImage" placeholder="বইয়ের pdf লিংক দিন">
+      <input type="text" id="dWhatsapp" placeholder="WhatsApp নাম্বার">
+      <button onclick="submitDonate()">সাবমিট</button>
+    </div>
+  </div>
+
+    <!-- নিচের তিনটি হিডেন লিস্ট: -->
+    <div id="classCategories" style="display:none;">
+      <option>প্রথম</option>
+      <option>দ্বিতিয়</option>
+      <option>তৃতিয়</option>
+      <option>চতুর্থ</option>
+      <option>পঞ্চম</option>
+      <option>ষষ্ঠ</option>
+      <option>সপ্তম</option>
+      <option>অষ্টম</option>
+      <option>নভম</option>
+      <option>দশম</option>
+      <option>একাদশ</option>
+      <option>দ্বাদশ</option>
+    </div>
+
+    <div id="islamicCategories" style="display:none;">
+      <option>কুরআন বিষয়ক</option>
+<option>হাদীস বিষয়ক</option>
+<option>আকিদা ও বিশ্বাস</option>
+<option>নামাজ, রোযা ও ইবাদত</option>
+<option>নবী ও সাহাবাদের জীবন</option>
+<option>ইসলামি শিক্ষা / পাঠ্যধারা</option>
+<option>নৈতিকতা ও চরিত্র গঠন</option>
+<option>ইসলামি নারী শিক্ষা</option>
+<option>ইসলামি সমাজ ও পরিবার</option>
+<option>শিশুদের ইসলামি বই</option>
+<option>সমকালীন ইসলামি বিষয়</option>
+<option>সাহিত্য ও গবেষণা</option>
+    </div>
+
+    <div id="sanataniCategories" style="display:none;">
+      <option>বেদ ও উপনিষদ বিষয়ক</option>
+<option>পুরাণ বিষয়ক</option>
+<option>দর্শন ও তত্ত্ব</option>
+<option>গীতা ও ব্যাখ্যা বিষয়ক</option>
+<option>পূজা-পার্বণ ও আচরণ বিষয়ক</option>
+<option>দেবদেবী বিষয়ক</option>
+<option>আচার, নৈতিকতা ও দর্শন</option>
+<option>শিশু ও নবীনদের ধর্মশিক্ষা</option>
+<option>সংস্কৃত ভাষা ও ব্যাকরণ</option>
+<option>মহাকাব্য বিষয়ক</option>
+<option>চরিত্র ও জীবনী বিষয়ক</option>
+<option>তন্ত্র, যোগ ও উপাসনা বিষয়ক</option>
+<option>সাহিত্য, গল্প ও প্রবন্ধ</option>
+<option>উৎসব ও সাংস্কৃতিক বিষয়</option>
+<option>আধুনিক সনাতনী চিন্তা ও গবেষণা</option>
+    </div>
+
+    <div id="bookCategories" style="display:none;">
+      <option>সাহিত্য ও উপন্যাস</option>
+  <option>প্রেম ও সম্পর্ক</option>
+  <option>মনোবিজ্ঞান ও আত্মোন্নয়ন</option>
+  <option>ব্যবসা, অর্থনীতি ও ক্যারিয়ার</option>
+  <option>ধর্ম ও দর্শন</option>
+  <option>শিশু ও কিশোর সাহিত্য</option>
+  <option>ইতিহাস ও ভূগোল</option>
+  <option>বিজ্ঞান ও প্রযুক্তি</option>
+  <option>রান্না ও ঘরোয়া জীবন</option>
+  <option>স্বাস্থ্য, চিকিৎসা</option>
+  <option>নারী উন্নয়ন ও জীবনধারা</option>
+  <option>ভ্রমণ ও অভিযান</option>
+  <option>শিল্প, সংস্কৃতি</option>
+  <option>বিনোদন</option>
+  <option>ভাষা শিক্ষা</option>
+  <option>কম্পিউটার ও প্রোগ্রামিং</option>
+  <option>রাজনীতি ও সমাজ</option>
+  <option>গবেষণা ও প্রবন্ধ সংগ্রহ</option>
+  <option>জীবনী ও আত্মজীবনী</option>
+    </div>
+    
+
+  <!-- Order Form Modal -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeOrderForm()">✖</span>
+      <h3>অর্ডার ফর্ম</h3>
+      <input type="hidden" id="orderItemCode">
+      <input type="hidden" id="orderWhatsapp">
+      <input type="text" id="oName" placeholder="আপনার নাম">
+      <input type="text" id="oAddress" placeholder="আপনার ঠিকানা">
+      <input type="text" id="oPhone" placeholder="আপনার ফোন">
+      <button onclick="submitOrder()">সাবমিট</button>
+    </div>
+  </div>
+
+  <script>
+    const sheetURL="https://opensheet.elk.sh/1d0r_mgnZ8KHURgmN0Sx-yAKyXsN4GSHR-Bt_ZnQ7eWQ/Sheet2"; 
+    let data=[];
+    let visibleCount=0;
+    const batchSize=6;
+
+    // Load Data
+    fetch(sheetURL)
+    .then(res=>res.json())
+    .then(json=>{
+      data=json;
+      loadMore();
+      populateFilters();
+    });
+
+    function loadMore(){
+      const container=document.getElementById("posts");
+      const slice=data.slice(visibleCount, visibleCount+batchSize);
+      slice.forEach(item=>{
+        if(!item.Locked || item.Locked!=="yes"){
+          const card=document.createElement("div");
+          card.className="card";
+          card.dataset.area=item.Address;
+          card.dataset.cat=item.Category;
+          card.dataset.code=item.Code;
+          card.innerHTML=`
+            <h3>${item.Pname}</h3>
+            <p>লেভেল: ${item.Address}<br>ক্যাটাগরি: ${item.Category}</p>
+            <button onclick="toggleDesc(this)" style="background:#555; padding:5px 10px; font-size:13px; color:white;">বর্ননা</button>
+            <p class="desc" style="display:none; margin-top:10px;">${item.Description || ""}</p>
+           
+            <button class="order-btn" onclick='window.open(${JSON.stringify(item.Image)})'>পডুন</button>`;
+          container.appendChild(card);
+        }
+      });
+      visibleCount+=batchSize;
+      if(visibleCount>=data.length) document.getElementById("loadMoreBtn").style.display="none";
+    }
+
+    function populateFilters(){
+      const areaSelect=document.getElementById("areaFilter");
+      const catSelect=document.getElementById("catFilter");
+      const areas=new Set(), cats=new Set();
+      data.forEach(item=>{if(item.Address) areas.add(item.Address); if(item.Category) cats.add(item.Category);});
+      areas.forEach(a=>areaSelect.innerHTML+=`<option>${a}</option>`);
+      cats.forEach(c=>catSelect.innerHTML+=`<option>${c}</option>`);
+    }
+
+    function filterPosts(){
+      let search=document.getElementById("searchBox").value.toLowerCase();
+      let area=document.getElementById("areaFilter").value;
+      let cat=document.getElementById("catFilter").value;
+      document.querySelectorAll(".card").forEach(card=>{
+        let match=true;
+        if(search && !card.innerText.toLowerCase().includes(search)) match=false;
+        if(area && card.dataset.area!==area) match=false;
+        if(cat && card.dataset.cat!==cat) match=false;
+        card.style.display=match?"block":"none";
+      });
+    }
+
+    // Donate Form
+    function openDonateForm(){document.getElementById("donateModal").style.display="flex";}
+    function closeDonateForm(){document.getElementById("donateModal").style.display="none";}
+    function submitDonate(){
+      const d={Pname:dPname.value,Address:dAddress.value,Whatsapp:dWhatsapp.value,Category:dCategory.value,Code:dCode.value,Description:dDescription.value,Image:dImage.value};
+      fetch("https://script.google.com/macros/s/AKfycbwWh1FAfO6n2mWpXi5j6UhTDLY6pyzy6rdZ-8E9lWCHs2up__HqNH2780JX2IndiLRW/exec",{method:"POST",body:JSON.stringify(d)})
+      .then(()=>{alert(" successully done ");closeDonateForm();});
+    }
+
+    //  book category
+  function updateCategory() {
+    const type = document.getElementById("dAddress").value;
+    const categorySelect = document.getElementById("dCategory");
+    categorySelect.innerHTML = '<option value=""> কেটাগরি</option>';
+
+    let sourceDiv = null;
+
+    if (type === "class") sourceDiv = document.getElementById("classCategories");
+    else if (type === "islamic") sourceDiv = document.getElementById("islamicCategories");
+    else if (type === "sanatani") sourceDiv = document.getElementById("sanataniCategories");
+     else if (type === "book") sourceDiv = document.getElementById("bookCategories");
+
+    if (sourceDiv) {
+      const options = sourceDiv.querySelectorAll("option");
+      options.forEach(opt => {
+        categorySelect.appendChild(opt.cloneNode(true));
+      });
+    }
+  }
+    
+    // Order Form
+    function openOrderForm(item){
+      document.getElementById("orderModal").style.display="flex";
+      orderItemCode.value=item.Code;
+      orderWhatsapp.value=item.Whatsapp;
+    }
+    function closeOrderForm(){document.getElementById("orderModal").style.display="none";}
+    function submitOrder(){
+      let name=oName.value, address=oAddress.value, phone=oPhone.value, code=orderItemCode.value, whatsapp=orderWhatsapp.value;
+      let msg=`I want to take\nName: ${name}\nAddress: ${address}\nPhone: ${phone}\nCode: ${code}`;
+      window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`);
+      fetch("https://script.google.com/macros/s/AKfycbymAp-Pfi77Vg6HmQNWe4u_B16ilNgReqiUvBLjx0YRVLtYWI0w1YUuBxoN0qZ9zP0w/exec",{method:"POST",body:JSON.stringify({Code:code,action:"delete"})});
+      closeOrderForm();
+    }
+
+    function toggleDesc(btn){
+      const desc=btn.nextElementSibling;
+      desc.style.display=desc.style.display==="none"?"block":"none";
+      btn.textContent=desc.style.display==="none"?"Show":"Hide";
+    }
+  </script>
+</body>
+</html>
