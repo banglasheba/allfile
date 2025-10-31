@@ -10,15 +10,14 @@
     .donate-btn {background:#ff5722; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;}
     
     .slider-container {width:100%; overflow:hidden; margin-bottom:20px;}
-.slider {display:flex; animation:slide 12s infinite;}
-.slider img {width:100%; flex-shrink:0; border-radius:10px;}
-
-@keyframes slide {
-  0% {transform:translateX(0);}
-  33% {transform:translateX(-100%);}
-  66% {transform:translateX(-200%);}
-  100% {transform:translateX(0);}
-}
+    .slider {display:flex; animation:slide 12s infinite;}
+    .slider img {width:100%; flex-shrink:0; border-radius:10px;}
+    @keyframes slide {
+      0% {transform:translateX(0);}
+      33% {transform:translateX(-100%);}
+      66% {transform:translateX(-200%);}
+      100% {transform:translateX(0);}
+    }
 
     .filters {padding:15px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; background:#fff;}
     .filters input, .filters select {padding:8px; border:1px solid #ccc; border-radius:5px;}
@@ -28,23 +27,25 @@
     .card h3 {margin:5px 0;}
     .order-btn {background:#4CAF50; color:white; padding:8px 12px; border:none; border-radius:5px; cursor:pointer;}
     .locked {opacity:0.5; pointer-events:none;}
+    
     /* Modal */
-    .modal {display:none; position:fixed; top:0; left:0; width:80%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;}
+    .modal {display:none; position:fixed; top:0; left:0; width:70%; height:90%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;}
     .modal-content {background:white; padding:20px; border-radius:10px; width:90%; max-width:700px;}
     .modal-content input, textarea, select {width:100%; margin-bottom:10px; padding:8px; border:1px solid #ccc; border-radius:5px;}
     .close {float:right; cursor:pointer; color:red;}
+    #loadMoreBtn {display:block; margin:20px auto; background:#007bff; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;}
   </style>
 </head>
 <body>
   <header>
     <h1>বস্ত্রদান সেবা</h1>
     <div style="text-align: center; margin-top: 50px;">
- <details>
-  <summary style="cursor: pointer; padding: 8px 12px; background:#007bff; color:#fff; border-radius:6px; display:inline-block;">
-    বস্রদান সেবা সম্পর্কে
-  </summary>
-  <p style="margin:10px 0 0 0;">
-   আমাদের সমাজে এমন অসংখ্য মানুষ আছে, যাদের বছরের পর বছর নতুন পোশাক কেনার সামর্থ্য হয় না। আবার অন্যদিকে, অনেকের ঘরেই আলমারিতে জমে থাকে অগণিত অপ্রয়োজনীয় পোশাক, যেগুলো একবার পরেই পরে থাকে ভুলে যাওয়া অবস্থায়।
+      <details>
+        <summary style="cursor: pointer; padding: 8px 12px; background:#007bff; color:#fff; border-radius:6px; display:inline-block;">
+          বস্রদান সেবা সম্পর্কে
+        </summary>
+        <p style="margin:10px 0 0 0;">
+          আমাদের সমাজে এমন অসংখ্য মানুষ আছে, যাদের বছরের পর বছর নতুন পোশাক কেনার সামর্থ্য হয় না। আবার অন্যদিকে, অনেকের ঘরেই আলমারিতে জমে থাকে অগণিত অপ্রয়োজনীয় পোশাক, যেগুলো একবার পরেই পরে থাকে ভুলে যাওয়া অবস্থায়।
 
 
 
@@ -86,7 +87,7 @@
 
 কোনো তথ্য তৃতীয় পক্ষের সঙ্গে শেয়ার করা হবে না।<br>
 
-দাতা এবং গ্রহিতার তথ্য সেবা কর্তৃপক্ষ স্থায়িভাবে ডেটা সংরক্ষন  করে না <br>
+দাতা এবং গ্রহিতার তথ্য সেবা কর্তৃপক্ষ স্থায়িভাবে ডেটা সংরক্ষন  করতে না <br>
 
 <h2>নিয়ম নিত</h2><br>
 
@@ -107,11 +108,10 @@
 
 <b>আমরা প্রতিশ্রুতিবদ্ধ একটি মানবিক, নিরাপদ ও বিশ্বাসযোগ্য অনলাইন সেবা প্রদানে।
 
-“বস্ত্রদান সেবা” এমন একটি প্ল্যাটফর্ম, যেখানে ছোট একটি দান — বড় একটি হাসি এনে দিতে পারে।</b>
-
-  </p>
-</details>
-</div>
+“বস্ত্রদান সেবা” এমন একটি প্ল্যাটফর্ম, যেখানে ছোট একটি দান — বড় একটি হাসি এনে দিতে পারে।
+        </p>
+      </details>
+    </div>
   </header>
   
   <!-- Slider -->
@@ -141,6 +141,7 @@
 
   <!-- Posts -->
   <div id="posts" class="posts"></div>
+  <button id="loadMoreBtn" onclick="loadMore()">আরও দেখুন</button>
 
   <!-- Donate Form Modal -->
   <div id="donateModal" class="modal">
@@ -149,8 +150,8 @@
       <h3>বস্ত্রদান ফর্ম</h3>
       <input type="text" id="dPname" placeholder="পণ্যের নাম">
       <select id="dAddress" required>
-    <option value="">এরিয়া নির্বাচন</option>
-    <option>চট্টগ্রাম</option>
+        <option value="">এরিয়া নির্বাচন</option>
+        <option>চট্টগ্রাম</option>
   <option>কক্সবাজার</option>
   <option>বান্দরবান</option>
   <option>রাঙ্গামাটি</option>
@@ -230,25 +231,23 @@
   <option>মৌলভীবাজার</option>
   <option>হবিগঞ্জ</option>
   <option>সুনামগঞ্জ</option>
-  </select>
+      </select>
       <input type="text" id="dWhatsapp" placeholder="WhatsApp নাম্বার">
       <select id="dCategory" required>
-    <option value="">পন্যের কেটাগরি</option>
-    
-  <option>পুরুষ সামগ্রি</option>
-  <option>মহিলা সামগ্রি</option>
-  <option>শিশু পন্য</option>
-  <option>শিত বস্র</option>
-  <option>ফ্যাশন</option>
-  <option>খেলাধুলা পন্য</option>
-  <option>শিক্ষা সামগ্রি</option>
-  <option>বই</option>
-  <option>ধর্মিয় উপকরন</option>
-  <option>স্কুল সামগ্রি</option>
-  <option>গৃহস্থালি সামগ্রি</option>
-  
-  <option>অন্যান্য</option>
-  </select>
+        <option value="">পন্যের কেটাগরি</option>
+        <option>পুরুষ সামগ্রি</option>
+        <option>মহিলা সামগ্রি</option>
+        <option>শিশু পন্য</option>
+        <option>শিত বস্র</option>
+        <option>ফ্যাশন</option>
+        <option>খেলাধুলা পন্য</option>
+        <option>শিক্ষা সামগ্রি</option>
+        <option>বই</option>
+        <option>ধর্মিয় উপকরন</option>
+        <option>স্কুল সামগ্রি</option>
+        <option>গৃহস্থালি সামগ্রি</option>
+        <option>অন্যান্য</option>
+      </select>
       <input type="text" id="dCode" placeholder="পণ্যের কোড (ইউনিক)">
       <textarea id="dDescription" placeholder="বর্ণনা"></textarea>
       <input type="text" id="dImage" placeholder="প্রোপাইল লিংক দিন">
@@ -271,52 +270,52 @@
   </div>
 
   <script>
-    const sheetURL="https://opensheet.elk.sh/1r3x6Mt1zPoz4PXmlB25R5qfzLmpO0XJU3MAIGg7MdeE/Sheet2"; // এখানে আপনার শিট আইডি বসান
+    const sheetURL="https://opensheet.elk.sh/1r3x6Mt1zPoz4PXmlB25R5qfzLmpO0XJU3MAIGg7MdeE/Sheet2"; 
     let data=[];
+    let visibleCount=0;
+    const batchSize=30;
 
     // Load Data
     fetch(sheetURL)
     .then(res=>res.json())
     .then(json=>{
       data=json;
-      loadPosts();
+      loadMore();
+      populateFilters();
     });
 
-    function loadPosts(){
+    function loadMore(){
       const container=document.getElementById("posts");
-      container.innerHTML="";
-      let areas=new Set();
-      let cats=new Set();
-
-      data.forEach(item=>{
-        if(!item.Locked || item.Locked!=="yes"){ // অর্ডার লক না থাকলে দেখাবে
+      const slice=data.slice(visibleCount, visibleCount+batchSize);
+      slice.forEach(item=>{
+        if(!item.Locked || item.Locked!=="yes"){
           const card=document.createElement("div");
           card.className="card";
           card.dataset.area=item.Address;
           card.dataset.cat=item.Category;
           card.dataset.code=item.Code;
           card.innerHTML=`
-           
+          <img src="${item.Image}" alt="Image">
             <h3>${item.Pname}</h3>
             <p>ঠিকানা: ${item.Address}<br>ক্যাটাগরি: ${item.Category}</p>
-            <button onclick="toggleDesc(this)" class="btn" style="background:#555; padding:5px 10px; font-size:13px;">বর্ণনা দেখুন</button>
-<p class="desc" style="display:none; margin-top:10px;">${item.Description || ""}</p>
+            <button onclick="toggleDesc(this)" style="background:#555; padding:5px 10px; font-size:13px; color:white;">বর্ণনা দেখুন</button>
+            <p class="desc" style="display:none; margin-top:10px;">${item.Description || ""}</p>
             <button class="order-btn" onclick='openOrderForm(${JSON.stringify(item)})'>অর্ডার</button>
-            <button class="order-btn" onclick='window.open(${JSON.stringify(item.Image)})'>প্রোপাইল</button>
-          `;
+            `;
           container.appendChild(card);
-          if(item.Address) areas.add(item.Address);
-          if(item.Category) cats.add(item.Category);
         }
       });
+      visibleCount+=batchSize;
+      if(visibleCount>=data.length) document.getElementById("loadMoreBtn").style.display="none";
+    }
 
-      // Dropdown populate
+    function populateFilters(){
       const areaSelect=document.getElementById("areaFilter");
       const catSelect=document.getElementById("catFilter");
-      areaSelect.innerHTML="<option value=''>এলাকা নির্বাচন করুন</option>";
-      catSelect.innerHTML="<option value=''>ক্যাটাগরি নির্বাচন করুন</option>";
-      areas.forEach(a=>{let opt=document.createElement("option");opt.value=a;opt.textContent=a;areaSelect.appendChild(opt);});
-      cats.forEach(c=>{let opt=document.createElement("option");opt.value=c;opt.textContent=c;catSelect.appendChild(opt);});
+      const areas=new Set(), cats=new Set();
+      data.forEach(item=>{if(item.Address) areas.add(item.Address); if(item.Category) cats.add(item.Category);});
+      areas.forEach(a=>areaSelect.innerHTML+=`<option>${a}</option>`);
+      cats.forEach(c=>catSelect.innerHTML+=`<option>${c}</option>`);
     }
 
     function filterPosts(){
@@ -336,73 +335,31 @@
     function openDonateForm(){document.getElementById("donateModal").style.display="flex";}
     function closeDonateForm(){document.getElementById("donateModal").style.display="none";}
     function submitDonate(){
-  const data = {
-    Pname: document.getElementById("dPname").value,
-    Address: document.getElementById("dAddress").value,
-    Whatsapp: document.getElementById("dWhatsapp").value,
-    Category: document.getElementById("dCategory").value,
-    Code: document.getElementById("dCode").value,
-    Description: document.getElementById("dDescription").value,
-    Image: document.getElementById("dImage").value,
-   
-  };
-
-  fetch("https://script.google.com/macros/s/AKfycbyKCKHLU5FcQF2_UGvXRedyMeEMiSmt-ch6SW8S9uT2W0kOWnCGsjE4K-6DOEjeCzN6/exec", {
-    method: "POST",
-    body: JSON.stringify(data)
-  })
-  .then(res => res.text())
-  .then(msg => {
-    alert("successfully Done");
-    closeDonateForm();
-  })
-  .catch(err => alert("faild error "+err));
-}
+      const d={Pname:dPname.value,Address:dAddress.value,Whatsapp:dWhatsapp.value,Category:dCategory.value,Code:dCode.value,Description:dDescription.value,Image:dImage.value};
+      fetch("https://script.google.com/macros/s/AKfycbymAp-Pfi77Vg6HmQNWe4u_B16ilNgReqiUvBLjx0YRVLtYWI0w1YUuBxoN0qZ9zP0w/exec",{method:"POST",body:JSON.stringify(d)})
+      .then(()=>{alert(" successully done ");closeDonateForm();});
+    }
 
     // Order Form
     function openOrderForm(item){
       document.getElementById("orderModal").style.display="flex";
-      document.getElementById("orderItemCode").value=item.Code;
-      document.getElementById("orderWhatsapp").value=item.Whatsapp;
+      orderItemCode.value=item.Code;
+      orderWhatsapp.value=item.Whatsapp;
     }
     function closeOrderForm(){document.getElementById("orderModal").style.display="none";}
     function submitOrder(){
-      let name=document.getElementById("oName").value;
-      let address=document.getElementById("oAddress").value;
-      let phone=document.getElementById("oPhone").value;
-      let code=document.getElementById("orderItemCode").value;
-      let whatsapp=document.getElementById("orderWhatsapp").value;
-
+      let name=oName.value, address=oAddress.value, phone=oPhone.value, code=orderItemCode.value, whatsapp=orderWhatsapp.value;
       let msg=`I want to take\nName: ${name}\nAddress: ${address}\nPhone: ${phone}\nCode: ${code}`;
       window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`);
-
-      lockPost(code);
+      fetch("https://script.google.com/macros/s/AKfycbymAp-Pfi77Vg6HmQNWe4u_B16ilNgReqiUvBLjx0YRVLtYWI0w1YUuBxoN0qZ9zP0w/exec",{method:"POST",body:JSON.stringify({Code:code,action:"delete"})});
       closeOrderForm();
     }
 
-    function lockPost(code){
-      let cards=document.querySelectorAll(".card");
-      cards.forEach(card=>{
-        if(card.dataset.code===code){
-          card.classList.add("locked");
-          let btn=card.querySelector(".order-btn");
-          btn.disabled=true;
-          btn.innerText="order done";
-        }
-      });
-    }
-    
-    // desc btn
     function toggleDesc(btn){
-  const desc = btn.nextElementSibling;
-  if(desc.style.display === "none"){
-    desc.style.display = "block";
-    btn.textContent = "Hide";
-  } else {
-    desc.style.display = "none";
-    btn.textContent = "see again";
-  }
-}
+      const desc=btn.nextElementSibling;
+      desc.style.display=desc.style.display==="none"?"block":"none";
+      btn.textContent=desc.style.display==="none"?"Show":"Hide";
+    }
   </script>
 </body>
 </html>
