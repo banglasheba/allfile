@@ -3,7 +3,7 @@
 
   <!-- Title -->
   <h1 style="text-align:center; font-size:28px; margin-bottom:20px;">
-    ইসলামিক একাডেমি
+    মক্তব
   </h1>
 
  
@@ -19,39 +19,31 @@
   </div>
 
   <!-- Admission Button -->
-  <div style="text-align:center; margin:20px 0;">
-    <button onclick="document.getElementById('admissionForm').style.display='block'" class="admission-btn">
-      ভর্তি আবেদন
-    </button>
-  </div>
+  <button class="btn" onclick="toggleForm()">ভর্তি ফর্ম</button>
 
   <!-- Admission Form (hidden by default) -->
-  <div id="admissionForm" class="form-popup">
-    <form id="admission" onsubmit="sendToWhatsApp(event)">
-      <h3>ভর্তি ফর্ম</h3>
-      <label>শিক্ষার্থির নাম:</label>
-      <input type="text" id="name" required>
-      <label>পিতার নাম:</label>
-      <input type="text" id="fthname" required>
-      <label>মাতার নাম:</label>
-      <input type="text" id="mthname" required>
-      <label>মোবাইল:</label>
-      <input type="text" id="phone" required>
-      <label>ঠিকানা:</label>
-      <input type="text" id="address" required>
-      <button type="submit">সাবমিট</button>
-      <button type="button" onclick="document.getElementById('admissionForm').style.display='none'">বন্ধ করুন</button>
-    </form>
-  </div>
+  <form id="admitionForm" onsubmit="submitForm(event)">
+  <input type="text" id="name" placeholder="নাম" required>
+    <input type="text" id="father" placeholder="পিতার নাম" required>
+    <input type="text" id="mother" placeholder="মাতার নাম" required>
+    <input type="text" id="jela" placeholder="জেলা" required>
+  <input type="text" id="opojela" placeholder="উপজেলা" required>
+  <input type="tel" id="phone" placeholder="ফোন" required>
+    <input type="text" id="StudentID" placeholder="৬ বা ৮ সংখ্যা কোড দাও" required>
+    <select type="hidden" id="taka">
+      <option value="200">200</option>
+    </select>
+  <button type="submit" class="btn">সাবমিট</button>
+</form>
   
    <!-- Collapsible Buttons -->
   <div class="accordion">
-    <button class="accordion-btn">ইসলামি একাডেমি সম্পর্কে</button>
+    <button class="accordion-btn">মক্তব সম্পর্কে</button>
     <div class="accordion-content">
-      <p>আমাদের ইসলামি একাডেমি একটি আধুনিক অনলাইন ইসলামি শিক্ষা প্ল্যাটফর্ম, যেখানে শিশুদের ঘরে বসেই কুরআন শিক্ষা গ্রহণের সুযোগ তৈরি করা হয়েছে। ব্যস্ত জীবনের কারণে অনেক সময় সন্তানদেরকে নিয়মিত মাদ্রাসায় পাঠানো সম্ভব হয় না। তাই অভিজ্ঞ ও যোগ্য হাফেজ, ক্বারি ও আলেম শিক্ষকদের মাধ্যমে অনলাইনে কুরআন শিক্ষা দেওয়ার উদ্যোগ নিয়েছি আমরা।।</p>
+      <p>আমাদের মক্তব একটি আধুনিক অনলাইন ইসলামি শিক্ষা প্ল্যাটফর্ম, যেখানে শিশুদের ঘরে বসেই কুরআন শিক্ষা গ্রহণের সুযোগ তৈরি করা হয়েছে। ব্যস্ত জীবনের কারণে অনেক সময় সন্তানদেরকে নিয়মিত মাদ্রাসায় পাঠানো সম্ভব হয় না। তাই অভিজ্ঞ ও যোগ্য হাফেজ, ক্বারি ও আলেম শিক্ষকদের মাধ্যমে অনলাইনে কুরআন শিক্ষা দেওয়ার উদ্যোগ নিয়েছি আমরা।।</p>
     </div>
 
-   <button class="accordion-btn">ইসলামি একাডেমির লক্ষ্য</button>
+   <button class="accordion-btn">মক্তবের লক্ষ্য</button>
 <div class="content">
   <p>শিশুদেরকে সঠিক তাজবিদসহ কুরআন তিলাওয়াত শেখানো<br>
   নূরানি কায়েদা থেকে শুরু করে ধাপে ধাপে কুরআন শিক্ষার সুযোগ দেওয়া<br>
@@ -60,7 +52,7 @@
   </p>
 </div>
 
-   <button class="accordion-btn">ইসলামি একাডেমির বিশেষত্ব</button>
+   <button class="accordion-btn">মক্তবের বিশেষত্ব</button>
 <div class="content">
   <p>অভিজ্ঞ ও সনদপ্রাপ্ত শিক্ষকবৃন্দ<br>
   লাইভ অনলাইন ক্লাস (Zoom/Google Meet)<br>
@@ -111,7 +103,17 @@
     
   </div>
   
-  
+  <!-- ফি  -->
+  <div style="text-align: center; margin-top: 50px;">
+      <details>
+        <summary style="cursor: pointer; padding: 8px 12px; background:#007bff; color:#fff; border-radius:6px; display:inline-block;">
+          মাসিক ফি ২০০ টাকা
+        </summary>
+        <p style="margin:10px 0 0 0;">
+          ......।</b>
+        </p>
+      </details>
+    </div>
 
   <!-- Description -->
   <div class="quran-desc">
@@ -150,8 +152,9 @@
  তাই কুরআন শিক্ষা শুধু ধর্মীয় দায়িত্ব নয়, বরং প্রতিটি মুসলিমের জন্য জীবন গঠনের অপরিহার্য অংশ
     </p>
   </div>
-
 </div>
+
+
 
 <!-- CSS -->
 <style>
@@ -175,14 +178,10 @@
   100% {transform:translateX(0);}
 }
 
-.admission-btn {
-  padding:12px 20px; background:#006400; color:white;
-  border:none; border-radius:8px; font-size:18px; cursor:pointer;
-}
-
-.form-popup {display:none; background:white; padding:20px; border:1px solid #ccc; border-radius:10px;}
-.form-popup input {width:100%; padding:8px; margin:5px 0; border:1px solid #ccc; border-radius:5px;}
-.form-popup button {margin-top:10px; padding:8px 12px; border:none; border-radius:5px; cursor:pointer;}
+.btn {display:inline-block; margin:20px auto; padding:12px 20px; background:#b30000; color:white; border:none; border-radius:5px; cursor:pointer;}
+    form {display:none; background:#fff; padding:20px; margin:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+    form input, form select, form textarea {width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:5px;}
+  
 
 .quran-desc {background:#f9f9f9; padding:15px; border-radius:10px; margin-top:20px;}
   
@@ -223,24 +222,43 @@
       panel.style.display = (panel.style.display==="block") ? "none" : "block";
     });
   });
+  
+  // Form Toggle
+  function toggleForm(){
+    const form=document.getElementById("admitionForm");
+    form.style.display=form.style.display==="block"?"none":"block";
+  }
 
-  // WhatsApp Submit
-  function sendToWhatsApp(e){
+  // Submit Form (Google Apps Script)
+  const scriptURL = "https://script.google.com/macros/s/AKfycbx2__KCELeo4el1McORzZDvSoqXpcNCb80N9eubTRgzLNpjlzvG_t6FaU_ispSkwRHpKg/exec";
+
+  async function submitForm(e){
     e.preventDefault();
-    let name    = document.getElementById("name").value;
-    let fthname    = document.getElementById("fthname").value;
-    let mthname    = document.getElementById("mthname").value;
-    let phone   = document.getElementById("phone").value;
-    let address = document.getElementById("address").value;
-    
 
-    // মেসেজ তৈরি
-    let msg = `ভর্তি আবেদন:%0Aনাম: ${name}%0Aপিতারনাম: ${fthname}%0Aমাতারনাম: ${mthname}%0Aমোবাইল: ${phone}%0Aঠিকানা: ${address}`;
+    const data = {
+      name: document.getElementById("name").value,
+      father: document.getElementById("father").value,
+      mother: document.getElementById("mother").value,
+      jela: document.getElementById("jela").value,
+      opojela: document.getElementById("opojela").value,
+      phone: document.getElementById("phone").value,
+      StudentID: document.getElementById("StudentID").value,
+      taka: document.getElementById("taka").value,
+    };
 
-    // Encode করে পাঠানো (বাংলা/স্পেস ঠিক থাকবে)
-    let encoded = encodeURIComponent(msg);
+    try {
+      await fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
 
-    // WhatsApp এ রিডাইরেক্ট
-    window.open("https://wa.me/8801610960746?text=" + encoded, "_blank");
+      alert("student successfully added");
+      document.getElementById("admitionForm").reset();
+
+    } catch (err) {
+      alert(" Error: " + err.message);
+    }
   }
 </script>
