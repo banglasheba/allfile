@@ -25,55 +25,59 @@
     .card {background:white; border-radius:10px; padding:10px; box-shadow:0 2px 5px rgba(0,0,0,0.2);}
     .card img {width:100%; height:150px; object-fit:cover; border-radius:10px;}
     .card h3 {margin:5px 0;}
-    .profile-btn {background:#007bff; color:white; padding:8px 12px; border:none; border-radius:5px; cursor:pointer;}
-    .desc {margin-top:10px; color:#333; line-height:1.4;}
-    #loadMoreBtn {display:block; margin:20px auto; background:#007bff; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;}
-
+    .order-btn {background:#4CAF50; color:white; padding:8px 12px; border:none; border-radius:5px; cursor:pointer;}
+    .locked {opacity:0.5; pointer-events:none;}
+    
     /* Modal */
-    .modal {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;}
+    .modal {display:none; position:fixed; top:0; left:0; width:70%; height:80%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;}
     .modal-content {background:white; padding:20px; border-radius:10px; width:90%; max-width:700px;}
     .modal-content input, textarea, select {width:100%; margin-bottom:10px; padding:8px; border:1px solid #ccc; border-radius:5px;}
     .close {float:right; cursor:pointer; color:red;}
+    #loadMoreBtn {display:block; margin:20px auto; background:#007bff; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;}
   </style>
 </head>
 <body>
   <header>
-    <h1>প্রাথমিক চিকিতসা</h1>
-    <div style="text-align: center; margin-top: 50px;">
-      <details>
-        <summary style="cursor: pointer; padding: 8px 12px; background:#007bff; color:#fff; border-radius:6px; display:inline-block;">
-          প্রাথমিক সম্পর্কে
-        </summary>
-        <p style="margin:10px 0 0 0;">
-          আমাদের সমাজে এমন অসংখ্য মানুষ আছে, ।</b>
-        </p>
-      </details>
-    </div>
+    <h1> প্রাথমিক চিকিতসা</h1>
+    
   </header>
   
   <!-- Slider -->
   <div class="slider-container">
     <div class="slider">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLORKEp7isDA3P7xh36o-CKsKilF9W6NEhUg&s" alt="Slide 1">
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLORKEp7isDA3P7xh36o-CKsKilF9W6NEhUg&s" alt="Slide 1">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaykHa8P6yOE2nJoGN1jg694Ti9J1apcN42g&s" alt="Slide 2">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS6b-jeOqN8Z3HuvwgAIgMp7SDu3eR4L8U6Q&s" alt="Slide 3">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAUZ1Q1DP6z7lNPpI0O_ry-9W8JVG2toT5Iw&s" alt="Slide 4">
     </div>
   </div>
-  
+  <div style="text-align: center; margin-top: 50px;">
+      <details>
+        <summary style="cursor: pointer; padding: 8px 12px; background:#007bff; color:#fff; border-radius:6px; display:inline-block;">
+          চিকিতসা সম্পর্কে
+        </summary>
+        <p style="margin:10px 0 0 0;">
+        <h2> বাংলা সেবা অনলাইন </h2><br>
+
+
+
+“জ্ঞানই শক্তি, ধর্মই পথ, আর মানবতাই সত্য।”।</b>
+        </p>
+      </details>
+    </div>
   <!-- Donation button -->
-  <header>
-    
-  </header>
+  
+   <button class="donate-btn" onclick="openDonateForm()"> চিকিতসা যুক্ত করুন</button>
+  
 
   <!-- Filters -->
   <div class="filters">
     <input type="text" id="searchBox" placeholder="নাম দিয়ে খুঁজুন..." onkeyup="filterPosts()">
     <select id="areaFilter" onchange="filterPosts()">
-      <option value="">লেভেল নির্বাচন করুন</option>
+      <option value="">কেটাগরি নির্বাচন </option>
     </select>
     <select id="catFilter" onchange="filterPosts()">
-      <option value="">ক্যাটাগরি নির্বাচন করুন</option>
+      <option value="">সাবকেটাগরি নির্বাচন</option>
     </select>
   </div>
 
@@ -82,12 +86,131 @@
   <button id="loadMoreBtn" onclick="loadMore()">আরও দেখুন</button>
 
   <!-- Donate Form Modal -->
-  
+  <div id="donateModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeDonateForm()">✖</span>
+      <h3> প্রাথমিক চিকিতসা সেবা যুক্ত করুন</h3>
+      <input type="text" id="dPname" placeholder="চিকিতসা নাম">
+      <select id="dAddress" required onchange="updateCategory()">  
+      <option value=""> কেটাগরি</option>  
+      <option value="emergency_care">জরুরি অবস্থা</option>
+<option value="burns_fire">আগুন ও পোড়া</option>
+<option value="animal_insect">প্রাণী ও পোকামাকড়ের ক্ষত</option>
+<option value="accident_injury">দুর্ঘটনা ও আঘাত</option>
+<option value="water_emergency">পানি ও ডুবে যাওয়া</option>
+<option value="poisoning">বিষক্রিয়া</option>
+<option value="temperature_related">তাপমাত্রাজনিত সমস্যা</option>
+<option value="common_illness">সাধারণ অসুস্থতা</option>
+<option value="heart_breathing">হৃদযন্ত্র ও শ্বাস-প্রশ্বাস সমস্যা</option>
+<option value="eye_ear_nose">চোখ, কান, নাক</option>
+<option value="child_first_aid">শিশুর প্রাথমিক চিকিৎসা</option>
+<option value="maternal_emergency">মাতৃস্বাস্থ্য জরুরি</option>
+<option value="environmental_hazard">পরিবেশগত বিপদ</option>
+
+    </select> 
+      
+      <select id="dCategory" required>  
+      <option value=""> সাবকেটাগরি</option>  
+    </select>
+      
+      <textarea id="dDescription" placeholder="চিকিতসা সম্পর্কে বিস্তারিত"></textarea>
+      <input type="text" id="dImage" placeholder="ফেসবুল প্রোপাইল লিংক দিন">
+      <input type="text" id="dWhatsapp" placeholder="WhatsApp নাম্বার">
+      <button onclick="submitDonate()">সাবমিট</button>
+    </div>
+  </div>
+
+     <!-- নিচের  হিডেন লিস্ট: -->
+    <div id="emergency_care" style="display:none;">
+     <option value="unconscious_person">অজ্ঞান হয়ে গেলে করণীয়</option>
+<option value="choking">দম বন্ধ হওয়া</option>
+<option value="cpr">সিপিআর (CPR)</option>
+<option value="head_injury">মাথায় আঘাত</option>
+<option value="bleeding_control">রক্তপাত বন্ধ</option>
+<option value="shock">শক হলে করণীয়</option>
+    </div>
+
+  <div id="burns_fire" style="display:none;">
+     <option value="minor_burn">হালকা পোড়া</option>
+<option value="major_burn">গুরুতর পোড়া</option>
+<option value="electric_burn">ইলেকট্রিক পোড়া</option>
+<option value="fire_emergency">আগুন লাগলে করণীয়</option>
+    </div>
+
+<div id="animal_insect" style="display:none;">
+     <option value="snake_bite">সাপ কামড়</option>
+<option value="dog_bite">কুকুর কামড়</option>
+<option value="cat_bite">বিড়াল কামড়</option>
+<option value="bee_sting">মৌমাছি দংশন</option>
+<option value="insect_bite">পোকামাকড় কামড়</option>
+
+    </div>
+<div id="accident_injury" style="display:none;">
+     <option value="cuts_wounds">কাটা-ছেঁড়া</option>
+<option value="sprain">মচকানো</option>
+<option value="fracture">হাড় ভাঙা</option>
+<option value="eye_injury">চোখে আঘাত</option>
+<option value="nose_bleeding">নাকে রক্ত পড়া</option>
+    </div>
+
+<div id="water_emergency" style="display:none;">
+    <option value="drowning">ডুবে যাওয়া</option>
+<option value="rescue_method">উদ্ধার পদ্ধতি</option>
+<option value="water_inhalation">অল্প শ্বাস নেওয়া</option>
+    </div>
+<div id="poisoning" style="display:none;">
+     <option value="food_poisoning">খাবার বিষক্রিয়া</option>
+<option value="chemical_poisoning">রাসায়নিক বিষক্রিয়া</option>
+<option value="medicine_overdose">ওষুধ বেশি খেয়ে ফেলা</option>
+<option value="pesticide_poisoning">কীটনাশক বিষক্রিয়া</option>
+    </div>
+<div id="temperature_related" style="display:none;">
+     <option value="heatstroke">হিটস্ট্রোক</option>
+<option value="dehydration">পানিশূন্যতা</option>
+<option value="hypothermia">হাইপোথার্মিয়া</option>
+    </div>
+<div id="common_illness" style="display:none;">
+     <option value="fever">জ্বর</option>
+<option value="cold_cough">সর্দি-কাশি</option>
+<option value="vomiting">বমিভাব ও বমি</option>
+<option value="diarrhea">ডায়রিয়া</option>
+<option value="headache">মাথাব্যথা</option>
+    </div>
+<div id="heart_breathing" style="display:none;">
+     <option value="chest_pain">বুকে ব্যথা</option>
+<option value="breathing_problem">শ্বাসকষ্ট</option>
+<option value="asthma_attack">অ্যাজমা অ্যাটাক</option>
+    </div>
+<div id="eye_ear_nose" style="display:none;">
+     <option value="foreign_object_eye">চোখে কিছু ঢুকে যাওয়া</option>
+<option value="ear_injury">কানে চোট</option>
+<option value="nose_foreign_object">নাকে কিছু ঢুকে যাওয়া</option>
+    </div>
+<div id="child_first_aid" style="display:none;">
+     <option value="child_fever">শিশুর জ্বর</option>
+<option value="child_breathing_issue">শ্বাসকষ্ট</option>
+<option value="child_cpr">শিশুর সিপিআর</option>
+<option value="child_seizure">শিশুর খিঁচুনি</option>
+    </div>
+<div id="maternal_emergency" style="display:none;">
+     <option value="pregnancy_bleeding">গর্ভাবস্থায় রক্তপাত</option>
+<option value="labor_pain">প্রসব ব্যথা</option>
+<option value="maternal_shock">মায়ের শক অবস্থা</option>
+    </div>
+
+<div id="environmental_hazard" style="display:none;">
+     <option value="lightning">বজ্রপাত</option>
+<option value="earthquake_injury">ভূমিকম্পে আঘাত</option>
+<option value="storm_flood">ঝড়-বন্যায় করণীয়</option>
+    </div>
+
+
+
   <script>
     const sheetURL="https://opensheet.elk.sh/1ieBa-5w-TRVCFNXIcM4iA7EPjUsQawr7Tqk8mBYzCQ0/Sheet1"; 
     let data=[];
     let visibleCount=0;
-    const batchSize=20;
+    const batchSize=60;
 
     // Load Data
     fetch(sheetURL)
@@ -102,37 +225,24 @@
       const container=document.getElementById("posts");
       const slice=data.slice(visibleCount, visibleCount+batchSize);
       slice.forEach(item=>{
-        const card=document.createElement("div");
-        card.className="card";
-        card.dataset.area=item.Address;
-        card.dataset.cat=item.Category;
-        card.dataset.code=item.Code;
-
-        const shortDesc=item.Description?.length>80 ? item.Description.substring(0,80)+"..." : item.Description;
-
-        card.innerHTML=`
-          <h3>${item.Pname}</h3>
-          <p>লেভেল: ${item.Address}<br>ক্যাটাগরি: ${item.Category}</p>
-          <p class="desc" id="desc-${item.Code}">${shortDesc}</p>
-          ${item.Description?.length>80 ? `<button onclick="toggleMore('${item.Code}','${encodeURIComponent(item.Description)}')" style="background:#555; color:white; border:none; border-radius:4px; padding:5px 10px;">More</button>` : ""}
-          `;
-        container.appendChild(card);
+        if(!item.Locked || item.Locked!=="yes"){
+          const card=document.createElement("div");
+          card.className="card";
+          card.dataset.area=item.Address;
+          card.dataset.cat=item.Category;
+          card.dataset.code=item.Code;
+          card.innerHTML=`
+            <h3>${item.Pname}</h3>
+            <p>লেভেল: ${item.Address}<br>কেটাগরি: ${item.Category}</p>
+            <button onclick="toggleDesc(this)" style="background:#555; padding:5px 10px; font-size:13px; color:white;">বিস্তারিত </button>
+            <p class="desc" style="display:none; margin-top:10px;">${item.Description || ""}</p>
+           
+            <button class="order-btn" onclick='window.open(${JSON.stringify(item.Image)})'>প্রোপাইল</button>`;
+          container.appendChild(card);
+        }
       });
       visibleCount+=batchSize;
       if(visibleCount>=data.length) document.getElementById("loadMoreBtn").style.display="none";
-    }
-
-    function toggleMore(code,fullText){
-      const desc=document.getElementById("desc-"+code);
-      if(desc.dataset.expanded==="true"){
-        desc.textContent=fullText.substring(0,80)+"...";
-        desc.dataset.expanded="false";
-        event.target.textContent="More";
-      }else{
-        desc.textContent=decodeURIComponent(fullText);
-        desc.dataset.expanded="true";
-        event.target.textContent="Few";
-      }
     }
 
     function populateFilters(){
@@ -161,9 +271,51 @@
     function openDonateForm(){document.getElementById("donateModal").style.display="flex";}
     function closeDonateForm(){document.getElementById("donateModal").style.display="none";}
     function submitDonate(){
-      const d={Pname:dPname.value,Address:dAddress.value,Whatsapp:dWhatsapp.value,Category:dCategory.value,Code:dCode.value,Description:dDescription.value,Image:dImage.value};
-      fetch("https://script.google.com",{method:"POST",body:JSON.stringify(d)})
-      .then(()=>{alert("✅ সফলভাবে সংরক্ষণ হয়েছে");closeDonateForm();});
+      const d={Pname:dPname.value,Whatsapp:dWhatsapp.value,Address:dAddress.value,Category:dCategory.value,Description:dDescription.value,Image:dImage.value};
+      fetch("https://script.google.com/macros/s/AKfycbzbhj64Gd7mCsvh1634S8XoTHUoLH0qBTA1DTsnBDR49KBkN6GEa3WRLqUDo5bVsX1l/exec",{method:"POST",body:JSON.stringify(d)})
+      .then(()=>{alert(" successully done ");closeDonateForm();});
+       document.getElementById("donateModal").reset();
+    }
+
+    
+    
+   //  book category
+  function updateCategory() {
+    const type = document.getElementById("dAddress").value;
+    const categorySelect = document.getElementById("dCategory");
+    categorySelect.innerHTML = '<option value=""> কেটাগরি</option>';
+
+    let sourceDiv = null;
+
+    if (type === "emergency_care") sourceDiv = document.getElementById("emergency_care");
+    else if (type === "burns_fire") sourceDiv = document.getElementById("burns_fire");
+    else if (type === "animal_insect") sourceDiv = document.getElementById("animal_insect");
+     else if (type === "accident_injury") sourceDiv = document.getElementById("accident_injury");
+     else if (type === "water_emergency") sourceDiv = document.getElementById("water_emergency");
+     else if (type === "poisoning") sourceDiv = document.getElementById("poisoning");
+     else if (type === "temperature_related") sourceDiv = document.getElementById("temperature_related");
+     else if (type === "common_illness") sourceDiv = document.getElementById("common_illness");
+     else if (type === "heart_breathing") sourceDiv = document.getElementById("heart_breathing");
+     else if (type === "eye_ear_nose") sourceDiv = document.getElementById("eye_ear_nose");
+    else if (type === "child_first_aid") sourceDiv = document.getElementById("child_first_aid");
+    else if (type === "maternal_emergency") sourceDiv = document.getElementById("maternal_emergency");
+    else if (type === "environmental_hazard") sourceDiv = document.getElementById("environmental_hazard");
+    
+    
+    if (sourceDiv) {
+      const options = sourceDiv.querySelectorAll("option");
+      options.forEach(opt => {
+        categorySelect.appendChild(opt.cloneNode(true));
+      });
+    }
+  }
+    
+    
+
+    function toggleDesc(btn){
+      const desc=btn.nextElementSibling;
+      desc.style.display=desc.style.display==="none"?"block":"none";
+      btn.textContent=desc.style.display==="none"?"Show":"Hide";
     }
   </script>
 </body>
