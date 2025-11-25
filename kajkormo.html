@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>কাজ কর্ম</title>
+  <style>
+    body {font-family: Arial, sans-serif; background:#f5f5f5; margin:0; padding:0;}
+    header {background:#4CAF50; color:white; padding:15px; text-align:center;}
+    .donate-btn {background:#ff5722; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;}
+    
+    .slider-container {width:100%; overflow:hidden; margin-bottom:20px;}
+    .slider {display:flex; animation:slide 12s infinite;}
+    .slider img {width:100%; flex-shrink:0; border-radius:10px;}
+    @keyframes slide {
+      0% {transform:translateX(0);}
+      33% {transform:translateX(-100%);}
+      66% {transform:translateX(-200%);}
+      100% {transform:translateX(0);}
+    }
+
+    .filters {padding:15px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; background:#fff;}
+    .filters input, .filters select {padding:8px; border:1px solid #ccc; border-radius:5px;}
+    .posts {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px; padding:15px;}
+    .card {background:white; border-radius:10px; padding:10px; box-shadow:0 2px 5px rgba(0,0,0,0.2);}
+    .card img {width:100%; height:150px; object-fit:cover; border-radius:10px;}
+    .card h3 {margin:5px 0;}
+    .order-btn {background:#4CAF50; color:white; padding:8px 12px; border:none; border-radius:5px; cursor:pointer;}
+    .locked {opacity:0.5; pointer-events:none;}
+    
+    /* Modal */
+    .modal {display:none; position:fixed; top:0; left:0; width:70%; height:90%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;}
+    .modal-content {background:white; padding:20px; border-radius:10px; width:90%; max-width:700px;}
+    .modal-content input, textarea, select {width:100%; margin-bottom:10px; padding:8px; border:1px solid #ccc; border-radius:5px;}
+    .close {float:right; cursor:pointer; color:red;}
+    #loadMoreBtn {display:block; margin:20px auto; background:#007bff; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>কাজ কর্ম</h1>
+    
+  </header>
+  
+  <!-- Slider -->
+  <div class="slider-container">
+    <div class="slider">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw9SaJOLWdcO9itq3FOR_1KWL_T5oVk1FDEdT5CsfRLikmiFpm" alt="Slide 1">
+      <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRz_baD2gyYoN3Rjwfy-ti_Vj8g5gJSNLPo2TsKAjwGxeUuHuk0" alt="Slide 2">
+      <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQnox9BmKzFsyp_tHM6qqJpuuXOdeo6lSQD1I64ZS0FJ8SkQ0Ib" alt="Slide 2">
+      <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQgn5PlleCNBlHQQXMToUAxisaZ2Zd3SBVN-FUj0zbDaO-cerAZ" alt="Slide 3">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTER2s8zNAlJpUeU4OFcv5HfRnQaevvF-xTzw&s" alt="Slide 3">
+    </div>
+  </div>
+  
+  
+  <div style="text-align: center; margin-top: 50px;">
+      <details>
+        <summary style="cursor: pointer; padding: 8px 12px; background:#007bff; color:#fff; border-radius:6px; display:inline-block;">
+          নিয়ম নিতি
+        </summary>
+        <p style="margin:10px 0 0 0;">
+          আমাদের
+        </p>
+      </details>
+    </div>
+  
+  <!-- Donation button -->
+  
+    <button class="donate-btn" onclick="openDonateForm()">এড ফর্ম</button>
+  
+
+  <!-- Filters -->
+  <div class="filters">
+    <input type="text" id="searchBox" placeholder="নাম দিয়ে খুঁজুন..." onkeyup="filterPosts()">
+    <select id="areaFilter" onchange="filterPosts()">
+      <option value="">কি প্রয়োজন </option>
+    </select>
+    <select id="catFilter" onchange="filterPosts()">
+      <option value=""> কেটাগরি নির্বাচন </option>
+    </select>
+  </div>
+
+  <!-- Posts -->
+  <div id="posts" class="posts"></div>
+  <button id="loadMoreBtn" onclick="loadMore()">আরও দেখুন</button>
+
+  <!-- Donate Form Modal -->
+  <div id="donateModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeDonateForm()">বন্ধ করুন</span>
+      <h3>কাজ ও কর্মি যুক্ত করার ফর্ম</h3>
+      <input type="text" id="dPname" placeholder="টাইটেল">
+      <select id="dAddress" required>
+        <option value=""> আমার প্রয়োজন</option>
+        <option>কাজ</option>
+  <option>কর্মি</option>
+  
+  
+      </select>
+      <input type="text" id="dWhatsapp" placeholder="WhatsApp নাম্বার">
+      <select id="dCategory" required>
+        <option value=""> কেটাগরি নির্বাচন</option>
+        
+         <!-- অফিস ও অনলাইন কাজ -->
+  <option>ডাটা এন্ট্রি</option>
+  <option>গ্রাফিক ডিজাইন</option>
+  <option>ভিডিও এডিটিং</option>
+  <option>কনটেন্ট রাইটিং</option>
+  <option>ডিজিটাল মার্কেটিং</option>
+  <option>সোশ্যাল মিডিয়া ম্যানেজমেন্ট</option>
+  <option>ওয়েব ডেভেলপমেন্ট</option>
+  <option>অ্যাপ ডেভেলপমেন্ট</option>
+  <option>SEO কাজ</option>
+        
+  <!-- টেকনিক্যাল ও সার্ভিস কাজ -->
+  <option>ইলেকট্রিশিয়ান</option>
+  <option>প্লাম্বার</option>
+  <option>ওয়েল্ডিং / লোহার কাজ</option>
+  <option>রাজমিস্ত্রি</option>
+  <option>স্যানিটারি মিস্ত্রি</option>
+  <option>AC সার্ভিস</option>
+  <option>ফ্রিজ রিপেয়ার</option>
+  <option>ওয়াশিং মেশিন রিপেয়ার</option>
+  <option>মোবাইল সার্ভিসিং</option>
+  <option>কম্পিউটার সার্ভিসিং</option>
+
+  <!-- ঘরবাড়ি সম্পর্কিত কাজ -->
+  <option>ঘর পরিষ্কার</option>
+  <option>বাড়ি ক্লিনিং সার্ভিস</option>
+  <option>পেইন্টিং / রং করা</option>
+  <option>কাঠের কাজ</option>
+  <option>ফার্নিচার মিস্ত্রি</option>
+  <option>পানি ট্যাংক পরিষ্কার</option>
+  <option>কিচেন সংস্কার</option>
+  <option>বাথরুম সংস্কার</option>
+
+  <!-- শ্রমিক / হেল্পার -->
+  <option>ডে-লেবার</option>
+  <option>মালামাল বহন</option>
+  <option>হেল্পার</option>
+  <option>ডেলিভারি বয়</option>
+  <option>ড্রাইভার</option>
+  <option>সিকিউরিটি গার্ড</option>
+
+ 
+
+  <!-- পার্সোনাল / হোম সার্ভিস -->
+  <option>রান্নার কাজ</option>
+  <option>হাউসহেল্প</option>
+  <option>বেবিসিটার</option>
+  <option>নার্সিং সেবা</option>
+  <option>বয়স্ক সেবা</option>
+  <option>ধোয়া-মোছার কাজ</option>
+
+ 
+
+  <!-- ইভেন্ট / মিডিয়া -->
+  <option>ফটোগ্রাফার</option>
+  <option>ভিডিওগ্রাফার</option>
+  <option>ইভেন্ট ডেকোরেশন</option>
+  <option>সাউন্ড সিস্টেম</option>
+  <option>ক্যাটারিং সার্ভিস</option>
+
+  
+
+  <!-- কৃষি / গ্রামীণ কাজ -->
+  <option>কৃষি শ্রমিক</option>
+  <option>জমি চাষ</option>
+  <option>ফসল কাটা</option>
+  <option>ধান মাড়াই</option>
+  <option>মুরগি ফার্ম সেবা</option>
+  <option>গবাদি পশুর সেবা</option>
+
+  <!-- ব্যবসা / বিক্রয় -->
+  <option>সেলসম্যান</option>
+  <option>দোকান হেল্পার</option>
+  <option>মার্কেটিং কর্মী</option>
+  <option>ক্যাশিয়ার</option>
+  <option>স্টক ম্যানেজার</option>
+
+      </select>
+      
+      <input type="text" id="dCode" placeholder=" কোড (৬ ডিজিট)">
+      <textarea id="dDescription" placeholder="কাজ সম্পর্কে বিস্তারিত বর্ণনা"></textarea>
+      <input type="text" id="dImage" placeholder="ফেসবুক প্রোপাইল লিংক">
+      <button onclick="submitDonate()">সাবমিট</button>
+    </div>
+  </div>
+
+  <!-- Order Form Modal -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeOrderForm()">✖</span>
+      <h3>আবেদন ফর্ম</h3>
+      <input type="hidden" id="orderItemCode">
+      <input type="hidden" id="orderWhatsapp">
+      <input type="text" id="oName" placeholder="আপনার নাম">
+      <input type="text" id="oAddress" placeholder="আপনার ঠিকানা">
+      <input type="text" id="oPhone" placeholder="আপনার ফোন">
+      <textarea id="oDescription" placeholder=" পত্র লিখুন"></textarea>
+      <button onclick="submitOrder()">সাবমিট</button>
+    </div>
+  </div>
+
+  <script>
+    const sheetURL="https://opensheet.elk.sh/1qZp-YLLBSYsSMLrB7Ghnrh4Eb8U_EkzNUJz4wOW_GZ0/Sheet2"; 
+    let data=[];
+    let visibleCount=0;
+    const batchSize=30;
+
+    // Load Data
+    fetch(sheetURL)
+    .then(res=>res.json())
+    .then(json=>{
+      data=json;
+      loadMore();
+      populateFilters();
+    });
+
+    function loadMore(){
+      const container=document.getElementById("posts");
+      const slice=data.slice(visibleCount, visibleCount+batchSize);
+      slice.forEach(item=>{
+        if(!item.Locked || item.Locked!=="yes"){
+          const card=document.createElement("div");
+          card.className="card";
+          card.dataset.area=item.Address;
+          card.dataset.cat=item.Category;
+          card.dataset.code=item.Code;
+          card.innerHTML=`
+          
+            <h3>${item.Pname}</h3>
+            <p>প্রয়োজন: ${item.Address}<br>ক্যাটাগরি: ${item.Category}</p>
+            <button onclick="toggleDesc(this)" style="background:#555; padding:5px 10px; font-size:13px; color:white;">কাজের বিস্তারিত</button>
+            <p class="desc" style="display:none; margin-top:10px;">${item.Description || ""}</p>
+            <button class="order-btn" onclick='window.open(${JSON.stringify(item.Image)})'>প্রোপাইল</button>
+            <button class="order-btn" onclick='openOrderForm(${JSON.stringify(item)})'>apply</button>
+            `;
+          container.appendChild(card);
+        }
+      });
+      visibleCount+=batchSize;
+      if(visibleCount>=data.length) document.getElementById("loadMoreBtn").style.display="none";
+    }
+
+    function populateFilters(){
+      const areaSelect=document.getElementById("areaFilter");
+      const catSelect=document.getElementById("catFilter");
+      const areas=new Set(), cats=new Set();
+      data.forEach(item=>{if(item.Address) areas.add(item.Address); if(item.Category) cats.add(item.Category);});
+      areas.forEach(a=>areaSelect.innerHTML+=`<option>${a}</option>`);
+      cats.forEach(c=>catSelect.innerHTML+=`<option>${c}</option>`);
+    }
+
+    function filterPosts(){
+      let search=document.getElementById("searchBox").value.toLowerCase();
+      let area=document.getElementById("areaFilter").value;
+      let cat=document.getElementById("catFilter").value;
+      document.querySelectorAll(".card").forEach(card=>{
+        let match=true;
+        if(search && !card.innerText.toLowerCase().includes(search)) match=false;
+        if(area && card.dataset.area!==area) match=false;
+        if(cat && card.dataset.cat!==cat) match=false;
+        card.style.display=match?"block":"none";
+      });
+    }
+
+    // Donate Form
+    function openDonateForm(){document.getElementById("donateModal").style.display="flex";}
+    function closeDonateForm(){document.getElementById("donateModal").style.display="none";}
+    function submitDonate(){
+      const d={Pname:dPname.value,Address:dAddress.value,Whatsapp:dWhatsapp.value,Category:dCategory.value,Code:dCode.value,Description:dDescription.value,Image:dImage.value};
+      fetch("https://script.google.com/macros/s/AKfycbx45quIUswrs2kSZq9R0HgIbGkvbNESBYql3Z93pi9noi8RR3zQuWJuLRuBwf-0qyt0aQ/exec",{method:"POST",body:JSON.stringify(d)})
+      .then(()=>{alert(" successully done ");closeDonateForm();});
+    }
+
+    // Order Form
+    function openOrderForm(item){
+      document.getElementById("orderModal").style.display="flex";
+      orderItemCode.value=item.Code;
+      orderWhatsapp.value=item.Whatsapp;
+    }
+    function closeOrderForm(){document.getElementById("orderModal").style.display="none";}
+    function submitOrder(){
+      let name=oName.value, address=oAddress.value, phone=oPhone.value, description=oDescription.value, code=orderItemCode.value, whatsapp=orderWhatsapp.value;
+      let msg=`I want to take\nName: ${name}\nAddress: ${address}\nPhone: ${phone}\nCode: ${code}\nDescription: ${description}`;
+      window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`);
+      fetch("https://script.google.com/macros/s/AKfycbx45quIUswrs2kSZq9R0HgIbGkvbNESBYql3Z93pi9noi8RR3zQuWJuLRuBwf-0qyt0aQ/exec",{method:"POST",body:JSON.stringify({Code:code,action:"delete"})});
+      closeOrderForm();
+    }
+
+    function toggleDesc(btn){
+      const desc=btn.nextElementSibling;
+      desc.style.display=desc.style.display==="none"?"block":"none";
+      btn.textContent=desc.style.display==="none"?"Show":"Hide";
+    }
+  </script>
+</body>
+</html>
