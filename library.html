@@ -39,16 +39,7 @@
 <body>
   <header>
     <h1> পাঠাগার</h1>
-    <div style="text-align: center; margin-top: 50px;">
-      <details>
-        <summary style="cursor: pointer; padding: 8px 12px; background:#007bff; color:#fff; border-radius:6px; display:inline-block;">
-          পাঠাগার সম্পর্কে
-        </summary>
-        <p style="margin:10px 0 0 0;">
-          আমাদের সমাজে এমন অসংখ্য মানুষ আছে, ।</b>
-        </p>
-      </details>
-    </div>
+    
   </header>
   
   <!-- Slider -->
@@ -66,20 +57,67 @@
       <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQSXH35T705OH2gnEwAhtcdscR0FViJf2fkx8UCPBDWaIM57PRa" alt="Slide 2">
     </div>
   </div>
-  
+   <!-- about pathagar -->
+<div style="text-align: center; margin-top: 50px;">
+      <details>
+        <summary style="cursor: pointer; padding: 8px 12px; background:#007bff; color:#fff; border-radius:6px; display:inline-block;">
+          পাঠাগার সম্পর্কে
+        </summary>
+        <p style="margin:10px 0 0 0;">
+        <h2> বাংলা সেবা অনলাইন পাঠাগার</h2><br>
+
+আজকের যুগে জ্ঞান আর ধর্মচর্চা শুধু বইয়ের পাতায় সীমাবদ্ধ নয় — এখন প্রযুক্তির মাধ্যমে ঘরে বসেই তা সহজলভ্য।
+বাংলা সেবা অনলাইন পাঠাগার সেই লক্ষ্য নিয়েই গড়ে উঠেছে।<br>
+
+আমাদের উদ্দেশ্য হলো দেশের প্রত্যন্ত গ্রামের মানুষ থেকে শুরু করে শহরের শিক্ষার্থী—
+সবাই যেন সহজেই অনলাইনের মাধ্যমে তাদের পছন্দের ধর্মীয়, শিক্ষামূলক, নৈতিক ও মানবিক বিষয়ক বই পড়তে পারে।<br>
+
+এই পাঠাগারে আপনি পাবেন:<br>
+
+ সনাতন ধর্ম,  ইসলাম, খ্রিস্টান, বৌদ্ধ — সব ধর্মের মৌলিক শিক্ষাবিষয়ক বই<br>
+
+📘 শ্রেণিভিত্তিক পাঠ্যবই ও সহায়ক শিক্ষা উপকরণ<br>
+
+📖 জীবন গঠনের গল্প, নৈতিকতা ও মানবিকতার পাঠ<br>
+
+🎧 অডিও ও ভিডিও ক্লাসের মাধ্যমে সহজবোধ্য উপস্থাপন<br>
+
+<br>
+
+আমরা বিশ্বাস করি —<br>
+“সঠিক জ্ঞান ও ধর্মীয় মূল্যবোধই সমাজ পরিবর্তনের সবচেয়ে শক্তিশালী হাতিয়ার।”<br>
+
+বাংলা সেবা পাঠাগারের মাধ্যমে প্রত্যেক মানুষ সহজে ও বিনামূল্যে বই পড়তে পারবে, জ্ঞান অর্জন করতে পারবে এবং নিজের জীবনকে আরও উন্নত ও আলোকিত করতে পারবে।
+
+📜 আমাদের লক্ষ্য:<br>
+
+ধর্মীয় ও নৈতিক শিক্ষার প্রসার ঘটানো।<br>
+
+গ্রামীণ ও সুবিধাবঞ্চিত মানুষের মধ্যে ডিজিটাল শিক্ষার সুযোগ তৈরি করা।<br>
+
+বাংলা ভাষায় বিনামূল্যে অনলাইন পাঠাগার গড়ে তোলা।<br>
+
+তরুণ প্রজন্মকে ধর্মীয়, সাংস্কৃতিক ও সামাজিক মূল্যবোধে শিক্ষিত করা।<br>
+
+ আমাদের বিশ্বাস:<br>
+
+“জ্ঞানই শক্তি, ধর্মই পথ, আর মানবতাই সত্য।”।</b>
+        </p>
+      </details>
+    </div>
+
   <!-- Donation button -->
-  <header>
-   <button class="donate-btn" onclick="openDonateForm()"> এড করুন</button>
-  </header>
+   <button class="donate-btn" onclick="openDonateForm()"> বই যুক্ত করুন</button>
+  
 
   <!-- Filters -->
   <div class="filters">
     <input type="text" id="searchBox" placeholder="নাম দিয়ে খুঁজুন..." onkeyup="filterPosts()">
     <select id="areaFilter" onchange="filterPosts()">
-      <option value="">লেভেল নির্বাচন করুন</option>
+      <option value="">লেভেল নির্বাচন </option>
     </select>
     <select id="catFilter" onchange="filterPosts()">
-      <option value="">ক্যাটাগরি নির্বাচন করুন</option>
+      <option value="">ক্যাটাগরি নির্বাচন </option>
     </select>
   </div>
 
@@ -90,15 +128,25 @@
   <!-- Donate Form Modal -->
   <div id="donateModal" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeDonateForm()">✖</span>
+      <span class="close" onclick="closeDonateForm()">বন্ধ করুন</span>
       <h3>ক্লাস বই যোগ করুন</h3>
-      <input type="text" id="dPname" placeholder="পণ্যের নাম">
+      <input type="text" id="dPname" placeholder="বইয়ের নাম">
       <select id="dAddress" required onchange="updateCategory()">  
-      <option value="">বই লেভেল</option>  
-      <option value="class">ক্লাস বই</option>  
-      <option value="islamic">ইসলামি বই</option>  
-      <option value="sanatani">সনাতনী বই</option>  
-        <option value="book">সকল বই</option> 
+      <option value=""> লেভেল</option>  
+      <option value="class">ক্লাস বই</option>
+        <option value="guid">গাইড বই</option>
+        <option value="job">চাকরি প্রস্তুতি</option>
+  <option value="islami">ইসলামি</option>
+        <option value="sanatani">সনাতনি</option>
+  <option value="literature">সাহিত্য</option>
+  <option value="kids">শিশু ও কিশোর</option>
+  <option value="history">ইতিহাস ও সমাজ</option>
+  <option value="business">অর্থনীতি ও ব্যবসা</option>
+  <option value="health">স্বাস্থ্য ও জীবনধারা</option>
+  <option value="technology">পরিবেশ ও প্রযুক্তি</option>
+  <option value="culture">সংস্কৃতি ও বিনোদন</option>
+  <option value="special">বিশেষ বিভাগ</option>
+        <option value="newspaper">পত্রিকা</option>
     </select> 
       
       <select id="dCategory" required>  
@@ -114,95 +162,180 @@
 
     <!-- নিচের তিনটি হিডেন লিস্ট: -->
     <div id="classCategories" style="display:none;">
-      <option>প্রথম</option>
-      <option>দ্বিতিয়</option>
-      <option>তৃতিয়</option>
-      <option>চতুর্থ</option>
-      <option>পঞ্চম</option>
-      <option>ষষ্ঠ</option>
-      <option>সপ্তম</option>
-      <option>অষ্টম</option>
-      <option>নভম</option>
-      <option>দশম</option>
-      <option>একাদশ</option>
-      <option>দ্বাদশ</option>
+      <option value="one">প্রথম</option>
+<option value="two">দ্বিতিয়</option>
+<option value="three">তৃতিয়</option>
+<option value="four">চতুর্থ</option>
+<option value="five">পঞ্চম</option>
+<option value="six">ষষ্ঠ</option>
+<option value="seven">সপ্তম</option>
+<option value="eight">অষ্টম</option>
+<option value="nine">নভম</option>
+<option value="ten">দশম</option>
+<option value="eleven">একাদশ</option>
+<option value="twelve">দ্বাদশ</option>
     </div>
 
-    <div id="islamicCategories" style="display:none;">
-      <option>কুরআন বিষয়ক</option>
-<option>হাদীস বিষয়ক</option>
-<option>আকিদা ও বিশ্বাস</option>
-<option>নামাজ, রোযা ও ইবাদত</option>
-<option>নবী ও সাহাবাদের জীবন</option>
-<option>ইসলামি শিক্ষা / পাঠ্যধারা</option>
-<option>নৈতিকতা ও চরিত্র গঠন</option>
-<option>ইসলামি নারী শিক্ষা</option>
-<option>ইসলামি সমাজ ও পরিবার</option>
-<option>শিশুদের ইসলামি বই</option>
-<option>সমকালীন ইসলামি বিষয়</option>
-<option>সাহিত্য ও গবেষণা</option>
+<div id="guid" style="display:none;">
+      <option value="one">প্রথম</option>
+<option value="two">দ্বিতিয়</option>
+<option value="three">তৃতিয়</option>
+<option value="four">চতুর্থ</option>
+<option value="five">পঞ্চম</option>
+<option value="six">ষষ্ঠ</option>
+<option value="seven">সপ্তম</option>
+<option value="eight">অষ্টম</option>
+<option value="nine">নভম</option>
+<option value="ten">দশম</option>
+<option value="eleven">একাদশ</option>
+<option value="twelve">দ্বাদশ</option>
     </div>
 
-    <div id="sanataniCategories" style="display:none;">
-      <option>বেদ ও উপনিষদ বিষয়ক</option>
-<option>পুরাণ বিষয়ক</option>
-<option>দর্শন ও তত্ত্ব</option>
-<option>গীতা ও ব্যাখ্যা বিষয়ক</option>
-<option>পূজা-পার্বণ ও আচরণ বিষয়ক</option>
-<option>দেবদেবী বিষয়ক</option>
-<option>আচার, নৈতিকতা ও দর্শন</option>
-<option>শিশু ও নবীনদের ধর্মশিক্ষা</option>
-<option>সংস্কৃত ভাষা ও ব্যাকরণ</option>
-<option>মহাকাব্য বিষয়ক</option>
-<option>চরিত্র ও জীবনী বিষয়ক</option>
-<option>তন্ত্র, যোগ ও উপাসনা বিষয়ক</option>
-<option>সাহিত্য, গল্প ও প্রবন্ধ</option>
-<option>উৎসব ও সাংস্কৃতিক বিষয়</option>
-<option>আধুনিক সনাতনী চিন্তা ও গবেষণা</option>
+<div id="job" style="display:none;">
+      <option value="general_knowledge">সাধারণ জ্ঞান</option>
+<option value="mathematics">গণিত</option>
+<option value="english">ইংরেজি</option>
+<option value="bangla">বাংলা</option>
+<option value="ict">কম্পিউটার ও তথ্য প্রযুক্তি (ICT)</option>
+<option value="reasoning">যুক্তি / মানসিক দক্ষতা</option>
+<option value="current_affairs">সমসাময়িক বিষয়াবলি</option>
+<option value="bcs">BCS প্রস্তুতি</option>
+<option value="bank_job">ব্যাংক চাকরি প্রস্তুতি</option>
+<option value="primary_teacher">প্রাইমারি শিক্ষক নিয়োগ</option>
+<option value="ntrca">NTRCA প্রস্তুতি</option>
+<option value="defense">পুলিশ / সশস্ত্র বাহিনী</option>
+<option value="ministry_jobs">মন্ত্রণালয় / সরকারি দপ্তর</option>
+<option value="question_bank">প্রশ্ন ব্যাংক</option>
+<option value="model_test">মডেল টেস্ট</option>
+<option value="admission_test">ভর্তি পরীক্ষা প্রস্তুতি</option>
+<option value="complete_series">বই সমগ্র / Complete Guide Series</option>
     </div>
 
-    <div id="bookCategories" style="display:none;">
-      <option>সাহিত্য ও উপন্যাস</option>
-  <option>প্রেম ও সম্পর্ক</option>
-  <option>মনোবিজ্ঞান ও আত্মোন্নয়ন</option>
-  <option>ব্যবসা, অর্থনীতি ও ক্যারিয়ার</option>
-  <option>ধর্ম ও দর্শন</option>
-  <option>শিশু ও কিশোর সাহিত্য</option>
-  <option>ইতিহাস ও ভূগোল</option>
-  <option>বিজ্ঞান ও প্রযুক্তি</option>
-  <option>রান্না ও ঘরোয়া জীবন</option>
-  <option>স্বাস্থ্য, চিকিৎসা</option>
-  <option>নারী উন্নয়ন ও জীবনধারা</option>
-  <option>ভ্রমণ ও অভিযান</option>
-  <option>শিল্প, সংস্কৃতি</option>
-  <option>বিনোদন</option>
-  <option>ভাষা শিক্ষা</option>
-  <option>কম্পিউটার ও প্রোগ্রামিং</option>
-  <option>রাজনীতি ও সমাজ</option>
-  <option>গবেষণা ও প্রবন্ধ সংগ্রহ</option>
-  <option>জীবনী ও আত্মজীবনী</option>
+    <div id="islami" style="display:none;">
+      <option value="quran_tafsir">কুরআন ও তাফসীর</option>
+  <option value="hadith_sharh">হাদিস ও শারহ</option>
+  <option value="aqeedah">আকীদা</option>
+  <option value="fiqh_law">ফিকহ ও ইসলামী আইন</option>
+  <option value="seerah_history">সীরাত ও ইসলামী ইতিহাস</option>
+      <option value="nabi sahabi_history">নবি সাহাবিদের ইতিহাস</option>
+  <option value="tasawwuf_spirituality">তাসাউফ ও আধ্যাত্মিকতা</option>
+  <option value="morality_ethics">চরিত্র গঠন ও নৈতিকতা</option>
+  <option value="family_women">পারিবারিক জীবন ও মহিলা বিষয়ক</option>
+  <option value="dawah">দাওয়াত ও প্রচার</option>
+  <option value="islamic_economics">ইসলামি অর্থনীতি ও ব্যাংকিং</option>
+  <option value="dua_amol_ruqya">দোয়া, আমল ও রুকইয়া</option>
+  <option value="children_islamic_books">শিশুদের ইসলামিক বই</option>
+  <option value="comparative_religion">তুলনামূলক ধর্মতত্ত্ব</option>
+  <option value="modern_islamic_thought">আধুনিক ইসলামিক চিন্তাধারা</option>
+    </div>
+
+ <div id="sanatani" style="display:none;">
+      <option value="vedas">বেদ</option>
+  <option value="upanishads">উপনিষদ</option>
+  <option value="puranas">পুরাণ</option>
+  <option value="epics">মহাকাব্য</option>
+  <option value="agamas">আগম-নিগম</option>
+  <option value="smriti">স্মৃতি শাস্ত্র</option>
+  <option value="dharmashastra">ধর্মশাস্ত্র</option>
+  <option value="tantra">তন্ত্র শাস্ত্র</option>
+  <option value="yoga_spirituality">যোগ ও অধ্যাত্ম</option>
+  <option value="stotra_mantra">স্তোত্র–মন্ত্র</option>
+  <option value="devotional_stories">দেব-দেবীর কাহিনি</option>
+  <option value="children_books">শিশুদের সনাতনি বই</option>
+  <option value="puja_path">পূজা-উপাসনা</option>
+  <option value="astrology">জ্যোতিষ ও রাশিফল</option>
+  <option value="philosophy">দর্শন শাস্ত্র</option>
+    </div>
+
+    <div id="literature" style="display:none;">
+      <option value="novel">উপন্যাস</option>
+  <option value="short_story">ছোটগল্প</option>
+  <option value="essay">প্রবন্ধ</option>
+  <option value="drama">নাটক</option>
+  <option value="poetry">কবিতা</option>
+  <option value="humor">রম্যরচনা</option>
+  <option value="biography">জীবনী</option>
+  <option value="autobiography">আত্মজীবনী</option>
+  <option value="memoir">স্মৃতিকথা</option>
+  <option value="translation">অনুবাদ সাহিত্য</option>
+    </div>
+
+    <div id="kids" style="display:none;">
+      <option value="kids_poem">ছড়া ও কবিতা</option>
+  <option value="fairy_tale">রূপকথা ও গল্প</option>
+  <option value="moral_story">নীতিকথা</option>
+  <option value="educational_story">শিক্ষণীয় গল্প</option>
+  <option value="adventure_story">অভিযান গল্প</option>
+  <option value="science_for_kids">বিজ্ঞানভিত্তিক শিশু বই</option>
+  <option value="comic">কার্টুন / কমিক বই</option>
     </div>
     
-
-  <!-- Order Form Modal -->
-  <div id="orderModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeOrderForm()">✖</span>
-      <h3>অর্ডার ফর্ম</h3>
-      <input type="hidden" id="orderItemCode">
-      <input type="hidden" id="orderWhatsapp">
-      <input type="text" id="oName" placeholder="আপনার নাম">
-      <input type="text" id="oAddress" placeholder="আপনার ঠিকানা">
-      <input type="text" id="oPhone" placeholder="আপনার ফোন">
-      <button onclick="submitOrder()">সাবমিট</button>
+<div id="history" style="display:none;">
+      <option value="bangladesh_history">বাংলাদেশের ইতিহাস</option>
+  <option value="world_history">বিশ্ব ইতিহাস</option>
+  <option value="sociology">সমাজবিজ্ঞান</option>
+  <option value="politics">রাজনীতি</option>
+  <option value="culture">সংস্কৃতি ও ঐতিহ্য</option>
+  <option value="liberation_war">মুক্তিযুদ্ধ বিষয়ক বই</option>
+  <option value="biography_social">জীবনী ও স্মৃতি</option>
     </div>
-  </div>
+
+<div id="business" style="display:none;">
+      <option value="economics">অর্থনীতি</option>
+  <option value="business_study">ব্যবসায় শিক্ষা</option>
+  <option value="entrepreneurship">উদ্যোক্তা উন্নয়ন</option>
+  <option value="management">ব্যবস্থাপনা</option>
+  <option value="marketing">বিপণন</option>
+  <option value="finance">বিনিয়োগ ও ফাইন্যান্স</option>
+    </div>
+
+<div id="health" style="display:none;">
+      <option value="health">প্রাথমিক চিকিৎসা</option>
+  <option value="yoga_meditation">যোগ ও মেডিটেশন</option>
+  <option value="nutrition">পুষ্টি ও খাদ্য</option>
+  <option value="mental_health">মানসিক স্বাস্থ্য</option>
+  <option value="family_life">পারিবারিক জীবন</option>
+  <option value="women_empowerment">নারীর স্বাস্থ্য ও ক্ষমতায়ন</option>
+    </div>
+
+<div id="technology" style="display:none;">
+      <option value="environment">পরিবেশ ও জলবায়ু পরিবর্তন</option>
+  <option value="agriculture">কৃষি বিজ্ঞান</option>
+  <option value="innovation">প্রযুক্তি উদ্ভাবন</option>
+  <option value="robotics_ai">রোবটিক্স ও কৃত্রিম বুদ্ধিমত্তা</option>
+  <option value="space_science">মহাকাশ বিজ্ঞান</option>
+    </div>
+
+<div id="culture" style="display:none;">
+      <option value="music">সংগীত</option>
+  <option value="theatre">নাট্যকলা</option>
+  <option value="film">চলচ্চিত্র</option>
+  <option value="art">চারু ও কারুকলা</option>
+  <option value="travel">ভ্রমণকাহিনি</option>
+  <option value="cooking">রান্নার বই</option>
+    </div>
+
+<div id="special" style="display:none;">
+      <option value="new_release">নতুন প্রকাশিত বই</option>
+  <option value="popular_books">জনপ্রিয় বই</option>
+  <option value="most_read">সর্বাধিক পঠিত বই</option>
+  <option value="author_based">লেখক অনুসারে</option>
+  <option value="publisher_based">প্রকাশক অনুসারে</option>
+  <option value="subject_based">বিষয় অনুসারে</option>
+    </div>
+<div id="newspaper" style="display:none;">
+      <option value="national">জাতিয়</option>
+  <option value="ancolik">আঞ্চলিক</option>
+ 
+    </div>
+
+  
 
   <script>
     const sheetURL="https://opensheet.elk.sh/1d0r_mgnZ8KHURgmN0Sx-yAKyXsN4GSHR-Bt_ZnQ7eWQ/Sheet2"; 
     let data=[];
     let visibleCount=0;
-    const batchSize=6;
+    const batchSize=65;
 
     // Load Data
     fetch(sheetURL)
@@ -266,6 +399,7 @@
       const d={Pname:dPname.value,Address:dAddress.value,Whatsapp:dWhatsapp.value,Category:dCategory.value,Code:dCode.value,Description:dDescription.value,Image:dImage.value};
       fetch("https://script.google.com/macros/s/AKfycbwWh1FAfO6n2mWpXi5j6UhTDLY6pyzy6rdZ-8E9lWCHs2up__HqNH2780JX2IndiLRW/exec",{method:"POST",body:JSON.stringify(d)})
       .then(()=>{alert(" successully done ");closeDonateForm();});
+       document.getElementById("donateModal").reset();
     }
 
     //  book category
@@ -277,9 +411,19 @@
     let sourceDiv = null;
 
     if (type === "class") sourceDiv = document.getElementById("classCategories");
-    else if (type === "islamic") sourceDiv = document.getElementById("islamicCategories");
-    else if (type === "sanatani") sourceDiv = document.getElementById("sanataniCategories");
-     else if (type === "book") sourceDiv = document.getElementById("bookCategories");
+    if (type === "guid") sourceDiv = document.getElementById("guid");
+    if (type === "job") sourceDiv = document.getElementById("job");
+    else if (type === "islami") sourceDiv = document.getElementById("islami");
+    else if (type === "sanatani") sourceDiv = document.getElementById("sanatani");
+    else if (type === "literature") sourceDiv = document.getElementById("literature");
+     else if (type === "kids") sourceDiv = document.getElementById("kids");
+     else if (type === "history") sourceDiv = document.getElementById("history");
+     else if (type === "business") sourceDiv = document.getElementById("business");
+     else if (type === "health") sourceDiv = document.getElementById("health");
+     else if (type === "culture") sourceDiv = document.getElementById("culture");
+     else if (type === "technology") sourceDiv = document.getElementById("technology");
+     else if (type === "special") sourceDiv = document.getElementById("special");
+    else if (type === "newspaper") sourceDiv = document.getElementById("newspaper");
 
     if (sourceDiv) {
       const options = sourceDiv.querySelectorAll("option");
@@ -290,19 +434,7 @@
   }
     
     // Order Form
-    function openOrderForm(item){
-      document.getElementById("orderModal").style.display="flex";
-      orderItemCode.value=item.Code;
-      orderWhatsapp.value=item.Whatsapp;
-    }
-    function closeOrderForm(){document.getElementById("orderModal").style.display="none";}
-    function submitOrder(){
-      let name=oName.value, address=oAddress.value, phone=oPhone.value, code=orderItemCode.value, whatsapp=orderWhatsapp.value;
-      let msg=`I want to take\nName: ${name}\nAddress: ${address}\nPhone: ${phone}\nCode: ${code}`;
-      window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`);
-      fetch("https://script.google.com/macros/s/AKfycbymAp-Pfi77Vg6HmQNWe4u_B16ilNgReqiUvBLjx0YRVLtYWI0w1YUuBxoN0qZ9zP0w/exec",{method:"POST",body:JSON.stringify({Code:code,action:"delete"})});
-      closeOrderForm();
-    }
+    
 
     function toggleDesc(btn){
       const desc=btn.nextElementSibling;
