@@ -37,6 +37,19 @@
 
 <header>
   <h1>রক্তদান সেবা</h1>
+  
+</header>
+
+<!-- Image Slider -->
+<div class="slider-container">
+  <div class="slider">
+    <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSc6C90d1klfVSceO-PkxQdc923YBqps-Z9Zoxqs1nJSNOcD-Iu" alt="Slide 1">
+    <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRuhvJqX9F6rfxf5hLSyLgocs-hGSTJBJTDLpeBm8SlH-4VVWvz" alt="Slide 2">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTETBjkYiEKFy7XN5Blf6ji6IGaFq6E6hk8cg&s" alt="Slide 3">
+  </div>
+</div>
+
+  
   <div style="text-align: center; margin-top: 50px;">
  <details>
   <summary style="cursor: pointer; padding: 8px 12px; background:#007bff; color:#fff; border-radius:6px; display:inline-block;">
@@ -129,27 +142,16 @@
   </p>
 </details>
 </div>
-</header>
-
-<!-- Image Slider -->
-<div class="slider-container">
-  <div class="slider">
-    <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSc6C90d1klfVSceO-PkxQdc923YBqps-Z9Zoxqs1nJSNOcD-Iu" alt="Slide 1">
-    <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRuhvJqX9F6rfxf5hLSyLgocs-hGSTJBJTDLpeBm8SlH-4VVWvz" alt="Slide 2">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTETBjkYiEKFy7XN5Blf6ji6IGaFq6E6hk8cg&s" alt="Slide 3">
-  </div>
-</div>
-
 <!-- Blood Donation Button -->
-<div style="text-align:center;">
-  <button class="btn" onclick="toggleForm()">Blood Donation</button>
+<div style="text-align:right;">
+  <button class="btn" onclick="toggleForm()">ব্লাড ডোনেশন ফর্ম</button>
 </div>
 
 <!-- Donation Form -->
 <form id="donationForm" onsubmit="submitForm(event)">
   <input type="text" id="name" placeholder="নাম" required>
-  <input type="text" id="address" placeholder="ঠিকানা" required>
-  <input type="tel" id="phone" placeholder="ফোন" required>
+  
+  <input type="tel" id="phone" placeholder="ফোন 880 সহ" required>
   <select id="bloodGroup" required>
     <option value="">রক্তের গ্রুপ</option>
     <option>A+</option><option>A-</option>
@@ -157,19 +159,19 @@
     <option>O+</option><option>O-</option>
     <option>AB+</option><option>AB-</option>
   </select>
-  <select id="area" required>
+  <select id="area" required onchange="updateCategory()">
     <option value="">এরিয়া</option>
-     <option>চট্টগ্রাম</option>
-  <option>কক্সবাজার</option>
-  <option>বান্দরবান</option>
-  <option>রাঙ্গামাটি</option>
-  <option>খাগড়াছড়ি</option>
-  <option>ফেনী</option>
-  <option>নোয়াখালী</option>
-  <option>লক্ষ্মীপুর</option>
-  <option>চাঁদপুর</option>
-  <option>কুমিল্লা</option>
-  <option>ব্রাহ্মণবাড়িয়া</option>
+     <option value="chottogram">চট্টগ্রাম</option>
+  <option value="coxbazar">কক্সবাজার</option>
+  <option value="bandarban">বান্দরবান</option>
+  <option value="ranggamati">রাঙ্গামাটি</option>
+  <option value="khagrachhari">খাগড়াছড়ি</option>
+  <option value="feni">ফেনী</option>
+  <option value="noyakhali">নোয়াখালী</option>
+  <option value="lakkhipur">লক্ষ্মীপুর</option>
+  <option value="cadpur">চাঁদপুর</option>
+  <option value="chumillah">কুমিল্লা</option>
+  <option value="brammonbadia">ব্রাহ্মণবাড়িয়া</option>
     
     
     <option>ঢাকা</option>
@@ -240,15 +242,155 @@
   <option>হবিগঞ্জ</option>
   <option>সুনামগঞ্জ</option>
   </select>
+  
+  <select id="address" required>  
+      <option value=""> উপজেলা</option>  
+    </select>
+  
   <button type="submit" class="btn">সাবমিট</button>
 </form>
+
+
+
+<!-- নিচের হিডেন opojela লিস্ট: -->
+    <div id="chottogram" style="display:none;">
+     <option value="anwara">আনোয়ারা</option>
+    <option value="boalkhali">বোয়ালখালী</option>
+    <option value="chandanaish">চন্দনাইশ</option>
+    <option value="fatikchhari">ফটিকছড়ি</option>
+    <option value="hathazari">হাটহাজারী</option>
+    <option value="lohagara">লোহাগাড়া</option>
+    <option value="mirsharai">মিরসরাই</option>
+    <option value="patiya">পটিয়া</option>
+    <option value="rangunia">রাঙ্গুনিয়া</option>
+    <option value="raozaan">রাউজান</option>
+    <option value="satkania">সাতকানিয়া</option>
+    <option value="sandwip">সন্দ্বীপ</option>
+    <option value="sitakunda">সীতাকুণ্ড</option>
+    </div>
+
+    <div id="coxbazar" style="display:none;">
+      <option value="coxsbazar_sadar">কক্সবাজার সদর</option>
+    <option value="chokoria">চকরিয়া</option>
+    <option value="kutubdia">কুতুবদিয়া</option>
+    <option value="maheshkhali">মহেশখালী</option>
+    <option value="pekua">পেকুয়া</option>
+    <option value="ruma">রামু</option>
+    <option value="teknaf">টেকনাফ</option>
+    <option value="ukhiya">উখিয়া</option>
+    </div>
+
+<div id="bandarban" style="display:none;">
+      <option value="bandarban_sadar">বান্দরবান সদর</option>
+    <option value="ali_kadam">আলী কদম</option>
+    <option value="lama">লামা</option>
+    <option value="naikhongchhari">নাইখংছড়ি</option>
+    <option value="rowangchhari">রোয়াংছড়ি</option>
+    <option value="ruma">রুমা</option>
+    <option value="thanchi">থানচি</option>
+    </div>
+
+<div id="khagrachhari" style="display:none;">
+      <option value="khagrachhari_sadar">খাগড়াছড়ি সদর</option>
+    <option value="dighinala">দিঘিনালা</option>
+    <option value="laxmichhari">লক্ষীছড়ি</option>
+    <option value="mahalchhari">মহলছড়ি</option>
+    <option value="manikchhari">মানিকছড়ি</option>
+    <option value="matiranga">মাটিরাঙ্গা</option>
+    <option value="panchhari">পানছড়ি</option>
+    <option value="ramgarh">রামগড়</option>
+    </div>
+
+
+
+<div id="ranggamati" style="display:none;">
+      <option value="rangamati_sadar">রাঙামাটি সদর</option>
+    <option value="baghaichhari">বাঘাইছড়ি</option>
+    <option value="barkal">বরকল</option>
+    <option value="kawkhali">কাউখালী</option>
+    <option value="belaichhari">বেলাইছড়ি</option>
+    <option value="jurachhari">জুরাছড়ি</option>
+    <option value="langadu">লংগদু</option>
+    <option value="naniarchar">নানিয়ারচর</option>
+    <option value="rajasthali">রাজস্থলী</option>
+    </div>
+
+<div id="feni" style="display:none;">
+     <option value="feni_sadar">ফেনী সদর</option>
+    <option value="chhagalnaiya">ছাগলনাইয়া</option>
+    <option value="daganbhuiyan">দাগনভূঞা</option>
+    <option value="parshuram">পরশুরাম</option>
+    <option value="phulgazi">ফুলগাজী</option>
+    <option value="sonagazi">সোনাগাজী</option>
+    </div>
+
+<div id="noyakhali" style="display:none;">
+      <option value="noakhali_sadar">নোয়াখালী সদর</option>
+    <option value="begumganj">বেগমগঞ্জ</option>
+    <option value="chatkhil">চাটখিল</option>
+    <option value="companiganj">কোম্পানীগঞ্জ</option>
+    <option value="hatia">হাতিয়া</option>
+    <option value="kabirhat">কবিরহাট</option>
+    <option value="senbagh">সেনবাগ</option>
+    <option value="sonaimganj">সোনাইমুড়ি</option>
+    <option value="subarnachar">সুবর্ণচর</option>
+    </div>
+
+<div id="lakkhipur" style="display:none;">
+      <option value="lakshmipur_sadar">লক্ষ্মীপুর সদর</option>
+    <option value="kamalnagar">কমলনগর</option>
+    <option value="raipur">রায়পুর</option>
+    <option value="ramganj">রামগঞ্জ</option>
+    <option value="ramgati">রামগতি</option>
+    </div>
+
+<div id="cadpur" style="display:none;">
+      <option value="chandpur_sadar">চাঁদপুর সদর</option>
+    <option value="faridganj">ফরিদগঞ্জ</option>
+    <option value="hajiganj">হাজীগঞ্জ</option>
+    <option value="kachuamia">কচুয়া</option>
+    <option value="matlab_north">মতলব উত্তর</option>
+    <option value="matlab_south">মতলব দক্ষিণ</option>
+    <option value="shahrasti">শাহরাস্তি</option>
+    </div>
+
+<div id="chumillah" style="display:none;">
+      <option value="comilla_sadar_south">কুমিল্লা সদর দক্ষিণ</option>
+    <option value="comilla_sadar">কুমিল্লা সদর</option>
+    <option value="barura">বরুড়া</option>
+    <option value="brahmanpara">ব্রাহ্মণপাড়া</option>
+    <option value="burichang">বুড়িচং</option>
+    <option value="chandina">চান্দিনা</option>
+    <option value="chauddagram">চৌদ্দগ্রাম</option>
+    <option value="daudkandi">দাউদকান্দি</option>
+    <option value="debidwar">দেবিদ্বার</option>
+    <option value="homna">হোমনা</option>
+    <option value="lalmai">লালমাই</option>
+    <option value="manoharganj">মনোহরগঞ্জ</option>
+    <option value="meghna">মেঘনা</option>
+    <option value="muradnagar">মুরাদনগর</option>
+    <option value="titas">তিতাস</option>
+    </div>
+
+<div id="brammonbadia" style="display:none;">
+      <option value="brahmanbaria_sadar">ব্রাহ্মণবাড়িয়া সদর</option>
+    <option value="akhaura">আখাউড়া</option>
+    <option value="ashuganj">আশুগঞ্জ</option>
+    <option value="bancharampur">বাঞ্ছারামপুর</option>
+    <option value="bijoynagar">বিজয়নগর</option>
+    <option value="kasba">কসবা</option>
+    <option value="nasirnagar">নাসিরনগর</option>
+    <option value="nabinagar">নবীনগর</option>
+    <option value="sarail">সরাইল</option>
+    </div>
 
 <!-- Filters -->
 <div class="filters">
   <input type="text" id="searchBox" class="search-box" placeholder="নাম বা ঠিকানা দিয়ে খুঁজুন..." onkeyup="filterPosts()">
   <select id="areaFilter" onchange="filterPosts()">
-    <option value="">এরিয়া</option>
+    <option value=""> এরিয়া</option>
   </select>
+  
   <select id="bloodFilter" onchange="filterPosts()">
     <option value="">রক্তের গ্রুপ</option>
   </select>
@@ -296,11 +438,39 @@
         body: JSON.stringify(data)
       });
 
-      alert(" Donor successfully added");
+      alert(" successfully added ,now under review");
       document.getElementById("donationForm").reset();
 
     } catch (err) {
-      alert("⚠️ Error: " + err.message);
+      alert(" Error: " + err.message);
+    }
+  }
+  
+   //  opjela category
+  function updateCategory() {
+    const type = document.getElementById("area").value;
+    const categorySelect = document.getElementById("address");
+    categorySelect.innerHTML = '<option value=""> ঠিকানা</option>';
+
+    let sourceDiv = null;
+
+    if (type === "chottogram") sourceDiv = document.getElementById("chottogram");
+    else if (type === "coxbazar") sourceDiv = document.getElementById("coxbazar");
+    else if (type === "bandarban") sourceDiv = document.getElementById("bandarban");
+     else if (type === "khagrachhari") sourceDiv = document.getElementById("khagrachhari");
+    else if (type === "ranggamati") sourceDiv = document.getElementById("ranggamati");
+    else if (type === "feni") sourceDiv = document.getElementById("feni");
+    else if (type === "noyakhali") sourceDiv = document.getElementById("noyakhali");
+    else if (type === "lakkhipur") sourceDiv = document.getElementById("lakkhipur");
+    else if (type === "cadpur") sourceDiv = document.getElementById("cadpur");
+    else if (type === "chumillah") sourceDiv = document.getElementById("chumillah");
+    else if (type === "brammonbadia") sourceDiv = document.getElementById("brammonbadia");
+
+    if (sourceDiv) {
+      const options = sourceDiv.querySelectorAll("option");
+      options.forEach(opt => {
+        categorySelect.appendChild(opt.cloneNode(true));
+      });
     }
   }
 
@@ -308,7 +478,7 @@
   const sheetURL = "https://opensheet.elk.sh/1SuyUnxhhTb4wrh7vQHJVpy3RaD16TQJaC2RgVJ82GDY/Sheet2";
   let allData = [];
   let currentIndex = 0;
-  const perPage = 6;
+  const perPage = 50;
 
   async function loadPosts(){
     const res = await fetch(sheetURL);
