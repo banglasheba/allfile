@@ -39,10 +39,25 @@
 <body>
   <header>
     <h1>বস্ত্রদান সেবা</h1>
-    <div style="text-align: center; margin-top: 50px;">
+    
+  </header>
+  
+  <!-- Slider -->
+  <div class="slider-container">
+    <div class="slider">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_toC-xdfNQiPLSFQry2IKy2w44IrgCYm_t8WViTA0Io_RK4BR_eRvq-tWBZwaZ-45CZo&usqp=CAU" alt="Slide 1">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeZsXDCwNDlbTtjD09yf0U3z5pV95te5d_jA&s" alt="Slide 2">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_wFakr2ZJKEv-ssiiHdV97JzqBYEVI1PEQFTSvvBJjUmW-NOOscA9vSAvYfI4VikR-3w&usqp=CAU" alt="Slide 3">
+    </div>
+  </div>
+  
+  
+  <p> এই সেবার বিশেষত্ত অপ্রয়োজনিয় অব্যবহিত জিনিসপত্র জামাকাপড অসহায় মানুষের মধ্যে দান করে দেওয়া</p>
+  
+  <div style="text-align: center; margin-top: 50px;">
       <details>
         <summary style="cursor: pointer; padding: 8px 12px; background:#007bff; color:#fff; border-radius:6px; display:inline-block;">
-          বস্রদান সেবা সম্পর্কে
+          বস্রদান সেবা সম্পর্কে বিস্তারিত
         </summary>
         <p style="margin:10px 0 0 0;">
           আমাদের সমাজে এমন অসংখ্য মানুষ আছে, যাদের বছরের পর বছর নতুন পোশাক কেনার সামর্থ্য হয় না। আবার অন্যদিকে, অনেকের ঘরেই আলমারিতে জমে থাকে অগণিত অপ্রয়োজনীয় পোশাক, যেগুলো একবার পরেই পরে থাকে ভুলে যাওয়া অবস্থায়।
@@ -112,30 +127,19 @@
         </p>
       </details>
     </div>
-  </header>
-  
-  <!-- Slider -->
-  <div class="slider-container">
-    <div class="slider">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_toC-xdfNQiPLSFQry2IKy2w44IrgCYm_t8WViTA0Io_RK4BR_eRvq-tWBZwaZ-45CZo&usqp=CAU" alt="Slide 1">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeZsXDCwNDlbTtjD09yf0U3z5pV95te5d_jA&s" alt="Slide 2">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_wFakr2ZJKEv-ssiiHdV97JzqBYEVI1PEQFTSvvBJjUmW-NOOscA9vSAvYfI4VikR-3w&usqp=CAU" alt="Slide 3">
-    </div>
-  </div>
-  
   <!-- Donation button -->
-  <header>
-    <button class="donate-btn" onclick="openDonateForm()">বস্ত্রদান</button>
-  </header>
+  
+    <button class="donate-btn" onclick="openDonateForm()">বস্ত্রদান ফর্ম</button>
+  
 
   <!-- Filters -->
   <div class="filters">
     <input type="text" id="searchBox" placeholder="পণ্যের নাম বা ঠিকানা দিয়ে খুঁজুন..." onkeyup="filterPosts()">
     <select id="areaFilter" onchange="filterPosts()">
-      <option value="">এলাকা নির্বাচন করুন</option>
+      <option value="">এরিয়া নির্বাচন </option>
     </select>
     <select id="catFilter" onchange="filterPosts()">
-      <option value="">ক্যাটাগরি নির্বাচন করুন</option>
+      <option value="">পন্যের কেটাগরি নির্বাচন</option>
     </select>
   </div>
 
@@ -146,7 +150,7 @@
   <!-- Donate Form Modal -->
   <div id="donateModal" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeDonateForm()">✖</span>
+      <span class="close" onclick="closeDonateForm()">বন্ধ করুন</span>
       <h3>বস্ত্রদান ফর্ম</h3>
       <input type="text" id="dPname" placeholder="পণ্যের নাম">
       <select id="dAddress" required>
@@ -232,11 +236,11 @@
   <option>হবিগঞ্জ</option>
   <option>সুনামগঞ্জ</option>
       </select>
-      <input type="text" id="dWhatsapp" placeholder="WhatsApp নাম্বার">
+      
       <select id="dCategory" required>
         <option value="">পন্যের কেটাগরি</option>
-        <option>পুরুষ সামগ্রি</option>
-        <option>মহিলা সামগ্রি</option>
+        <option>পুরুষ পন্য</option>
+        <option>মহিলা পন্য</option>
         <option>শিশু পন্য</option>
         <option>শিত বস্র</option>
         <option>ফ্যাশন</option>
@@ -250,6 +254,7 @@
       </select>
       <input type="text" id="dCode" placeholder="পণ্যের কোড (ইউনিক)">
       <textarea id="dDescription" placeholder="বর্ণনা"></textarea>
+      <input type="text" id="dWhatsapp" placeholder="WhatsApp নাম্বার 880সহ">
       <input type="text" id="dImage" placeholder="প্রোপাইল লিংক দিন">
       <button onclick="submitDonate()">সাবমিট</button>
     </div>
@@ -336,7 +341,7 @@
     function closeDonateForm(){document.getElementById("donateModal").style.display="none";}
     function submitDonate(){
       const d={Pname:dPname.value,Address:dAddress.value,Whatsapp:dWhatsapp.value,Category:dCategory.value,Code:dCode.value,Description:dDescription.value,Image:dImage.value};
-      fetch("https://script.google.com/macros/s/AKfycbymAp-Pfi77Vg6HmQNWe4u_B16ilNgReqiUvBLjx0YRVLtYWI0w1YUuBxoN0qZ9zP0w/exec",{method:"POST",body:JSON.stringify(d)})
+      fetch("https://script.google.com/macros/s/AKfycbyGokVTOy1QR6xeEIPGKfBfMRLvoNHl_kJuFpj3s4Ph3kvUQha1mv8zT-Z45Rrgak7g/exec",{method:"POST",body:JSON.stringify(d)})
       .then(()=>{alert(" successully done ");closeDonateForm();});
     }
 
@@ -351,7 +356,7 @@
       let name=oName.value, address=oAddress.value, phone=oPhone.value, code=orderItemCode.value, whatsapp=orderWhatsapp.value;
       let msg=`I want to take\nName: ${name}\nAddress: ${address}\nPhone: ${phone}\nCode: ${code}`;
       window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`);
-      fetch("https://script.google.com/macros/s/AKfycbymAp-Pfi77Vg6HmQNWe4u_B16ilNgReqiUvBLjx0YRVLtYWI0w1YUuBxoN0qZ9zP0w/exec",{method:"POST",body:JSON.stringify({Code:code,action:"delete"})});
+      fetch("https://script.google.com/macros/s/AKfycbyGokVTOy1QR6xeEIPGKfBfMRLvoNHl_kJuFpj3s4Ph3kvUQha1mv8zT-Z45Rrgak7g/exec",{method:"POST",body:JSON.stringify({Code:code,action:"delete"})});
       closeOrderForm();
     }
 
